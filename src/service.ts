@@ -22,7 +22,7 @@ export class AppService {
     this.userRepository.delete(id);
     return "user with id "+id +" has been deleted";
   }
-  findUserById(id: number): Promise<User>{
-   return this.userRepository.findOneBy({id: id})
+  findUserById(id: number): Promise<User|null>{
+   return this.userRepository.findOneBy({Id:id})
   }
 }
