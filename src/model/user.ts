@@ -3,9 +3,12 @@ import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 @Entity()
 export class User{
 @PrimaryGeneratedColumn()
-id: number;
+Id: number;
+
+ @Column()
+  FirstName: string;
+   @Column()
+  LastName: string;
 @Column()
-name: string;
-@Column()
-age:number
+Age:number
 }
