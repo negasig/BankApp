@@ -9,7 +9,7 @@ export class AppController {
   getHello(): string {
     return this.appService.getStudents();
   }
-  @Get("/student")
+  @Get("/studen")
   getstudentbyid(): string {
     return this.appService.getStudentByyId(5);
   }
