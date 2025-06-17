@@ -14,8 +14,10 @@ import { User } from './model/user';
       database: 'testng',
       entities: [User],
       synchronize: true,
-    }),],
+    }),
+    TypeOrmModule.forFeature([User]),],
   controllers: [AppController],
   providers: [AppService],
+
 })
 export class AppModule {}
