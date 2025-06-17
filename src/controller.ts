@@ -15,7 +15,7 @@ export class AppController {
   findAll(): Promise< User[]> {
     return this.appService.find();
   }
-  @Get(':id')
+  @Get('findByid/:id')
   getUserByid(@Param('id') id:number){
     return this.appService.findUserById(id);
   }
