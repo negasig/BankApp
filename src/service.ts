@@ -11,7 +11,7 @@ export class AppService {
     const user = new User();
     user.FirstName = createUserDto.firstName;
     user.LastName = createUserDto.lastName;
-    user.Age = createUserDto.age;
+    user.Age = createUserDto.Age;
 
     return this.userRepository.save(user);
   }
