@@ -20,6 +20,7 @@ export class AppController {
     return this.appService.findUserById(id);
   }
   @Delete('deleteuser/:id')
+  
   deletuser(@Param('id') id:number): string{
     return this.appService.deletuser(id)
   }
