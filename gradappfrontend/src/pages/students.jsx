@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-
+import 'tailwindcss'
 export default function Students() {
     const[users, setUsers]=useState([]);
    
@@ -19,7 +19,7 @@ findusers();
     },[users])
   return<>
   <h1>Users</h1>
-<table>
+<table class="table">
     <thead>
         <th>FirstName</th>
         <th>lastname</th>
@@ -27,7 +27,7 @@ findusers();
     </thead>
     <tbody>
 {users.map(u=>{
-         return  <tr key={u.id}><td>{u.FirstName}</td><td>{u.LastName}</td> <td>{u.Age}</td></tr>
+         return  <tr key={u.id} className="bg-emerald-200"><td>{u.FirstName}</td><td>{u.LastName}</td> <td>{u.Age}</td></tr>
          
         }
         )}
