@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { User } from './model/user';
 import { Repository } from 'typeorm';
 import { CreateUserDto } from './dto/CreateUserDto';
+import { error } from 'console';
 
 @Injectable()
 export class AppService {
@@ -12,6 +13,8 @@ export class AppService {
     user.FirstName = createUserDto.firstName;
     user.LastName = createUserDto.lastName;
     user.Age = createUserDto.Age;
+    user.AccountNumber=createUserDto.AccountNumber;
+    user.Balance=createUserDto.Balance;
 
     return this.userRepository.save(user);
   }
@@ -25,4 +28,15 @@ export class AppService {
   findUserById(id: number): Promise<User|null>{
    return this.userRepository.findOneBy({Id:id})
   }
+  async deposit(accountNumber: number,amount:number): Promise<User|string|null>{
+   const user=await this.userRepository.findOne({where:{AccountNumber:accountNumber}})
+ if(!user){
+  return "no user";
+ }
+ else{
+  user.Balance +=amount;
+ await this.userRepository.save(user);
+  return "balance updated"
+  }
+}
 }

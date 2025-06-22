@@ -10,5 +10,9 @@ Id: number;
    @Column()
   LastName: string;
 @Column()
-Age:number
+Age:number;
+@Column()
+AccountNumber:number;
+@Column()
+Balance:number;
 }

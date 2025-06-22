@@ -2,6 +2,7 @@ import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
 import { AppService } from './service';
 import { User } from './model/user';
 import { CreateUserDto } from './dto/CreateUserDto';
+import { AppModule } from './module';
 
 @Controller("students/")
 export class AppController {
@@ -23,5 +24,10 @@ export class AppController {
   
   deletuser(@Param('id') id:number): string{
     return this.appService.deletuser(id)
+  }
+  @Post("deposit")
+  depost(@Body() user:CreateUserDto): Promise<User|null|string>{
+      return this.appService.deposit(user.AccountNumber, user.Balance);
+    
   }
 }
