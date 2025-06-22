@@ -30,4 +30,9 @@ export class AppController {
       return this.appService.deposit(user.AccountNumber, user.Balance);
     
   }
+  @Post("withdraw")
+  withdraw(@Body() user:CreateUserDto): Promise<User|null|string>{
+      return this.appService.withdraw(user.AccountNumber, user.Balance);
+    
+  }
 }

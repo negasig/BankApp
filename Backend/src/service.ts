@@ -31,12 +31,26 @@ export class AppService {
   async deposit(accountNumber: number,amount:number): Promise<User|string|null>{
    const user=await this.userRepository.findOne({where:{AccountNumber:accountNumber}})
  if(!user){
-  return "no user";
+  return `Acc ${accountNumber} is not found`;
  }
  else{
   user.Balance +=amount;
  await this.userRepository.save(user);
-  return "balance updated"
+  return `Your Account ${accountNumber} has been credited with ${amount} Birr. Your Current Balance is ${user.Balance}.`;
+  }
+}
+  async withdraw(accountNumber: number,amount:number): Promise<User|string|null>{
+   const user=await this.userRepository.findOne({where:{AccountNumber:accountNumber}})
+ if(!user){
+  return `Account ${accountNumber} is not found`;
+ }
+ else if(user.Balance<amount){
+  return "You don't have enough balace in your account."
+ }
+   else{
+  user.Balance -=amount;
+ await this.userRepository.save(user);
+  return `${amount} Birr deducted from Your Account  ${accountNumber} your new balance is ${user.Balance}` ;
   }
 }
 }
