@@ -47,10 +47,13 @@ export class AppService {
  else if(user.Balance<amount){
   return "You don't have enough balace in your account."
  }
+ else if(amount<0){
+  return "Amount should be greater than zero"
+ }
    else{
   user.Balance -=amount;
  await this.userRepository.save(user);
-  return `${amount} Birr deducted from Your Account  ${accountNumber} your new balance is ${user.Balance}` ;
+  return `${amount} Birr deducted from Your Account  ${accountNumber} your new balance is ${user.Balance} Birr` ;
   }
 }
 }
