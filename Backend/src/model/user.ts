@@ -15,4 +15,6 @@ Age:number;
 AccountNumber:number;
 @Column()
 Balance:number;
+@Column()
+dailywithdrawl:number;
 }

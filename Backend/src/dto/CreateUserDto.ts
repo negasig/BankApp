@@ -4,5 +4,6 @@ export class CreateUserDto {
   Age: number;
   AccountNumber:number;
   Balance:number;
+  dailywithdrawal:number;
 }
   
