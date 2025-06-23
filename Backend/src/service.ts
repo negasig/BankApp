@@ -42,7 +42,7 @@ export class AppService {
   async withdraw(accountNumber: number,amount:number): Promise<User|string|null>{
    const user=await this.userRepository.findOne({where:{AccountNumber:accountNumber}})
  if(!user){
-  return `Account ${accountNumber} is not found`;
+  return `Account ${accountNumber} does not exist`;
  }
  else if(user.Balance<amount){
   return "You don't have enough balace in your account."
