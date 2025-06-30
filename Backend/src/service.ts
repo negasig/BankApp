@@ -56,7 +56,7 @@ export class AppService {
   return "You don't have enough balace in your account."
  }
 
- else if(amount<0){
+ else if(amount<=0){
   return "Amount should be greater than zero"
  }
   else if(user.dailywithdrawl+amount>dailymax){

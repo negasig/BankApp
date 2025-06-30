@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import 'tailwindcss'
+import '../output.css'
 export default function Students() {
     const[users, setUsers]=useState([]);
    
@@ -18,16 +18,19 @@ findusers();
 
     },[users])
   return<>
-  <h1>Users</h1>
-<table class="table">
+  <h1>Customers</h1>
+<table className="border-solid bg-white w-full">
     <thead>
-        <th>FirstName</th>
-        <th>lastname</th>
-        <th>age</th>
+        <th className='bg-green-700 text-white text-left'>FirstName</th>
+        <th className='bg-green-700 text-white text-left'>LastName</th>
+        <th className='bg-green-700 text-white text-left'>Age</th>
+        <th className='bg-green-700 text-white text-left'>AccountNumber</th>
+        <th className='bg-green-700 text-white text-left'>Balance</th>
+        <th className='bg-green-700 text-white text-left'>Dailytransaction</th>
     </thead>
     <tbody>
 {users.map(u=>{
-         return  <tr key={u.id} className="bg-emerald-200"><td>{u.FirstName}</td><td>{u.LastName}</td> <td>{u.Age}</td></tr>
+         return  <tr key={u.id} className='border-1'><td>{u.FirstName}</td><td>{u.LastName}</td> <td>{u.Age}</td><td>{u.AccountNumber}</td><td>{u.Balance}</td><td>{u.dailywithdrawl}</td></tr>
          
         }
         )}
@@ -35,7 +38,8 @@ findusers();
     </tbody>
 </table>
     
-        
+       
+
   
   </>
 }
