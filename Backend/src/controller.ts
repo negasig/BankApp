@@ -35,4 +35,8 @@ export class AppController {
       return this.appService.withdraw(user.AccountNumber, user.Balance);
     
   }
+  @Post('signin')
+  signin(@Body() user:CreateUserDto):Promise<User|null|string|undefined>{
+    return this.appService.login(user.username, user.password)
+  }
 }

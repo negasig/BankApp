@@ -4,6 +4,7 @@ import { User } from './model/user';
 import { Repository } from 'typeorm';
 import { CreateUserDto } from './dto/CreateUserDto';
 import { error } from 'console';
+import { promises } from 'dns';
 
 @Injectable()
 export class AppService {
@@ -56,7 +57,7 @@ export class AppService {
   return "You don't have enough balace in your account."
  }
 
- else if(amount<0){
+ else if(amount<=0){
   return "Amount should be greater than zero"
  }
   else if(user.dailywithdrawl>dailymax){
@@ -70,6 +71,15 @@ export class AppService {
   user.dailywithdrawl+=amount;
  await this.userRepository.save(user);
   return `${amount} Birr deducted from Your Account  ${accountNumber} your new balance is ${user.Balance} Birr` ;
+  }
+}
+async login(username:string, password:string): Promise<any>{
+  const user=await this.userRepository.findOne({ where: { username: username } });
+ if(user?.password===password&& user.username===username){
+  return "loged in"
+  }
+  else{
+    return "incorrect credientials";
   }
 }
 }
