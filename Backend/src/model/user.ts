@@ -17,4 +17,8 @@ AccountNumber:number;
 Balance:number;
 @Column()
 dailywithdrawl:number;
+@Column()
+username:string;
+@Column()
+password:string;
 }

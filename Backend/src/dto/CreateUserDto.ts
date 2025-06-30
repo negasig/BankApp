@@ -5,5 +5,7 @@ export class CreateUserDto {
   AccountNumber:number;
   Balance:number;
   dailywithdrawal:number;
+  username:string;
+  password:string;
 }
   
