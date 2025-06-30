@@ -59,8 +59,11 @@ export class AppService {
  else if(amount<0){
   return "Amount should be greater than zero"
  }
-  else if(user.dailywithdrawl+amount>dailymax){
+  else if(user.dailywithdrawl>dailymax){
   return "reached maximum daily transaction"
+ }
+   else if(user.dailywithdrawl+amount>dailymax){
+  return `${amount} Birr will exceed daily maximum transaction please minimize`;
  }
    else{
   user.Balance -=amount;

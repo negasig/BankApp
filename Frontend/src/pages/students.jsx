@@ -24,10 +24,13 @@ findusers();
         <th>FirstName</th>
         <th>lastname</th>
         <th>age</th>
+        <th>Accountnumber</th>
+        <th>Balance</th>
+        <th>dailywithdrawl</th>
     </thead>
     <tbody>
 {users.map(u=>{
-         return  <tr key={u.id} className="bg-emerald-200"><td>{u.FirstName}</td><td>{u.LastName}</td> <td>{u.Age}</td></tr>
+         return  <tr key={u.id} className="bg-emerald-200"><td>{u.FirstName}</td><td>{u.LastName}</td> <td>{u.Age}</td><td>{u.AccountNumber}</td><td>{u.Balance}</td><td>{u.dailywithdrawl}</td></tr>
          
         }
         )}
