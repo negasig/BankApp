@@ -21,10 +21,4 @@ dailywithdrawl:number;
 username:string;
 @Column()
 password:string;
-@Column()
-deposit:number;
-@Column()
-withdrawal:number
-@Column()
-description:string
 }

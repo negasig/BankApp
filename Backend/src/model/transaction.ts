@@ -18,4 +18,6 @@ deposit:number;
 withdrawal:number
 @Column()
 description:string
+@Column()
+date:Date
 }
