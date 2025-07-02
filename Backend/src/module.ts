@@ -3,6 +3,7 @@ import { AppController } from './controller';
 import { AppService } from './service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './model/user';
+import {Transactionn } from './model/transaction';
 
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -12,10 +13,10 @@ import { User } from './model/user';
       username: 'root',
       password: '',
       database: 'testng',
-      entities: [User],
+      entities: [User, Transactionn],
       synchronize: true,
     }),
-    TypeOrmModule.forFeature([User]),],
+    TypeOrmModule.forFeature([User, Transactionn]),],
   controllers: [AppController],
   providers: [AppService],
 

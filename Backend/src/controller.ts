@@ -27,8 +27,7 @@ export class AppController {
   }
   @Post("deposit")
   depost(@Body() user:CreateUserDto): Promise<User|null|string>{
-      return this.appService.deposit(user.AccountNumber, user.Balance);
-    
+      return this.appService.deposit(user.AccountNumber, user.Balance, user.description);
   }
   @Post("withdraw")
   withdraw(@Body() user:CreateUserDto): Promise<User|null|string|undefined>{

@@ -7,5 +7,6 @@ export class CreateUserDto {
   dailywithdrawal:number;
   username:string;
   password:string;
+  description:string;
 }
   

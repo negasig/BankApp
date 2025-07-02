@@ -1,14 +1,15 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from './model/user';
-import { Repository } from 'typeorm';
+import { Repository, Transaction } from 'typeorm';
 import { CreateUserDto } from './dto/CreateUserDto';
 import { error } from 'console';
 import { promises } from 'dns';
+import { Transactionn } from './model/transaction';
 
 @Injectable()
 export class AppService {
-  constructor(@InjectRepository(User) private readonly userRepository: Repository<User>,){}
+  constructor(@InjectRepository(User) private readonly userRepository: Repository<User>, @InjectRepository(User) private readonly transactionRepo: Repository<Transactionn>,){}
  create(createUserDto: CreateUserDto): Promise<User> {
     const user = new User();
     user.FirstName = createUserDto.firstName;
@@ -30,7 +31,7 @@ export class AppService {
   findUserById(id: number): Promise<User|null>{
    return this.userRepository.findOneBy({Id:id})
   }
-  async deposit(accountNumber: number,amount:number): Promise<User|string|null>{
+  async deposit(accountNumber: number,amount:number, description:string): Promise<User|string|null>{
    
    const user=await this.userRepository.findOne({where:{AccountNumber:accountNumber}})
  if(!user){
@@ -40,10 +41,22 @@ export class AppService {
 
   return "Amount Should be greater than zero";
   }
- else{
-  user.Balance +=amount;
+  else if(user){
+    const transaction=new Transactionn();
+    transaction.AccountNumber=user.AccountNumber;
+    transaction.FirstName=user.FirstName;
+    transaction.LastName=user.LastName;
+    transaction.deposit=amount;
+    transaction.description=description
+    transaction.Balance=user.Balance+amount;
+    await this.transactionRepo.save(transaction);
+     user.Balance +=amount;
  await this.userRepository.save(user);
+
   return `Your Account ${accountNumber} has been credited with ${amount} Birr. Your Current Balance is ${user.Balance}.`;
+  }
+ else{
+ return"please try again"
   }
 }
   async withdraw(accountNumber: number,amount:number): Promise<User|string|null|undefined>{
@@ -69,6 +82,7 @@ export class AppService {
    else{
   user.Balance -=amount;
   user.dailywithdrawl+=amount;
+  user.withdrawal=amount;
  await this.userRepository.save(user);
   return `${amount} Birr deducted from Your Account  ${accountNumber} your new balance is ${user.Balance} Birr` ;
   }
