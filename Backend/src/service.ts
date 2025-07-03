@@ -49,6 +49,7 @@ export class AppService {
     transaction.deposit=amount;
     transaction.description=description
     transaction.Balance=user.Balance+amount;
+    transaction.date=new Date();
     await this.transactionRepo.save(transaction);
      user.Balance +=amount;
  await this.userRepository.save(user);
@@ -86,6 +87,7 @@ export class AppService {
     transaction.LastName=user.LastName;
     transaction.withdrawal=amount;
     transaction.description=description
+    transaction.date=new Date();
     transaction.Balance=user.Balance-amount;
     await this.transactionRepo.save(transaction);
   user.Balance -=amount;
@@ -106,5 +108,14 @@ async login(username:string, password:string): Promise<any>{
   else{
     return "incorrect credientials";
   }
+}
+async findtransactionofuser(AccountNumber:number):Promise<Transactionn|undefined|any>{
+  const user=this.transactionRepo.find({where:{AccountNumber:AccountNumber}, order:{
+            date: "DESC"
+        } })
+if(user){
+  return user;
+}
+  return "Account not found";
 }
 }

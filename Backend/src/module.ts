@@ -18,7 +18,7 @@ import {Transactionn } from './model/transaction';
     }),
     TypeOrmModule.forFeature([User, Transactionn]),],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService,],
 
 })
 export class AppModule {}

@@ -3,6 +3,7 @@ import { AppService } from './service';
 import { User } from './model/user';
 import { CreateUserDto } from './dto/CreateUserDto';
 import { AppModule } from './module';
+import { Transactionn } from './model/transaction';
 
 @Controller("students/")
 export class AppController {
@@ -37,5 +38,9 @@ export class AppController {
   @Post('signin')
   signin(@Body() user:CreateUserDto):Promise<User|null|string|undefined>{
     return this.appService.login(user.username, user.password)
+  }
+  @Post("transaction")
+  findtransaction(@Body() customerdto:CreateUserDto):Promise<Transactionn>{
+return this.appService.findtransactionofuser(customerdto.AccountNumber);
   }
 }
