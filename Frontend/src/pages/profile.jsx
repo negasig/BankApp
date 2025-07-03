@@ -17,12 +17,20 @@ export default function Profile() {
           setUser(res.data);
         })
     }
-    useEffect(()=>{
-finduser();
-
-    },[accountnumber])
+        useEffect(()=>{
+    finduser();
+    
+        },[accountnumber])
   return<>
   <h1>Customer details</h1>
+  <div>
+   <form onClick={finduser}>
+    <label htmlFor="">Enter Account number</label>
+    <input type='number' onChange={(e)=>setAccountnumber(e.target.value)} placeholder='accountnumber' />
+    <input type='submit'/>
+    </form> 
+
+</div>
 <table className="border-solid table-column bg-white w-full p-2">
     <thead>
         <th className='bg-green-700 text-white text-left'>Date</th>
@@ -45,13 +53,7 @@ finduser();
  
     </tbody>
 </table>
-<div>
-   <form onClick={finduser}>
-    <input type='text' onChange={(e)=>setAccountnumber(e.target.value)} />
-    <input type='submit'/>
-    </form> 
 
-</div>
    
 
   
