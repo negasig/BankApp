@@ -1,6 +1,6 @@
 import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
 import { AppService } from './service';
-import { User } from './model/user';
+import { Customer } from './model/customer';
 import { CreateUserDto } from './dto/CreateUserDto';
 import { AppModule } from './module';
 import { Transactionn } from './model/transaction';
@@ -10,11 +10,11 @@ export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Post("addUser")
-  create(@Body() createuse: CreateUserDto): Promise< User> {
+  create(@Body() createuse: CreateUserDto): Promise< Customer> {
     return this.appService.create(createuse);
   }
    @Get("findCustomers")
-  findAll(): Promise< User[]> {
+  findAll(): Promise< Customer[]> {
     return this.appService.find();
   }
   @Get('findByid/:id')
@@ -27,16 +27,16 @@ export class AppController {
     return this.appService.deletuser(id)
   }
   @Post("deposit")
-  depost(@Body() user:CreateUserDto): Promise<User|null|string>{
+  depost(@Body() user:CreateUserDto): Promise<Customer|null|string>{
       return this.appService.deposit(user.AccountNumber, user.Balance, user.description);
   }
   @Post("withdraw")
-  withdraw(@Body() user:CreateUserDto): Promise<User|null|string|undefined>{
+  withdraw(@Body() user:CreateUserDto): Promise<Customer|null|string|undefined>{
       return this.appService.withdraw(user.AccountNumber, user.Balance, user.description);
     
   }
   @Post('signin')
-  signin(@Body() user:CreateUserDto):Promise<User|null|string|undefined>{
+  signin(@Body() user:CreateUserDto):Promise<Customer|null|string|undefined>{
     return this.appService.login(user.username, user.password)
   }
   @Post("transaction")

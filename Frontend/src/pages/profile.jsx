@@ -6,7 +6,8 @@ export default function Profile() {
    const[accountnumber, setAccountnumber]=useState(0);
     
     const urll="http://localhost:3001/students/transaction";
-    const finduser=()=>{
+    const finduser=(event)=>{
+       event.preventDefault();
         axios({
           method:'Post',
           url:urll,
@@ -17,15 +18,14 @@ export default function Profile() {
           setUser(res.data);
         })
     }
-        useEffect(()=>{
-    finduser();
-        },[accountnumber])
+
+
   return<>
   <h1>Customer details</h1>
   <div>
-   <form onClick={finduser}>
+   <form onSubmit={finduser}>
     <label htmlFor="">Enter Account number</label>
-    <input type='number' value={accountnumber} onChange={(e)=>setAccountnumber(e.target.value)} placeholder='accountnumber' />
+    <input type='number'  onChange={(e)=>setAccountnumber(e.target.value)} placeholder='accountnumber' />
     <input type='submit'/>
     </form> 
 </div>

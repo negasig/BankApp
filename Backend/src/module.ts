@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { AppController } from './controller';
 import { AppService } from './service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { User } from './model/user';
+import { Customer } from './model/customer';
 import {Transactionn } from './model/transaction';
 
 @Module({
@@ -13,10 +13,10 @@ import {Transactionn } from './model/transaction';
       username: 'root',
       password: '',
       database: 'testng',
-      entities: [User, Transactionn],
+      entities: [Customer, Transactionn],
       synchronize: true,
     }),
-    TypeOrmModule.forFeature([User, Transactionn]),],
+    TypeOrmModule.forFeature([Customer, Transactionn]),],
   controllers: [AppController],
   providers: [AppService,],
 

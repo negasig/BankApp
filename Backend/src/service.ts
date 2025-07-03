@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { User } from './model/user';
+import { Customer } from './model/customer';
 import { Repository } from 'typeorm';
 import { CreateUserDto } from './dto/CreateUserDto';
 import { error } from 'console';
@@ -9,9 +9,9 @@ import { Transactionn } from './model/transaction';
 
 @Injectable()
 export class AppService {
-  constructor(@InjectRepository(User) private readonly userRepository: Repository<User>, @InjectRepository(Transactionn) private readonly transactionRepo: Repository<Transactionn>,){}
- create(createUserDto: CreateUserDto): Promise<User> {
-    const user = new User();
+  constructor(@InjectRepository(Customer) private readonly userRepository: Repository<Customer>, @InjectRepository(Transactionn) private readonly transactionRepo: Repository<Transactionn>,){}
+ create(createUserDto: CreateUserDto): Promise<Customer> {
+    const user = new Customer();
     user.FirstName = createUserDto.firstName;
     user.LastName = createUserDto.lastName;
     user.Age = createUserDto.Age;
@@ -21,17 +21,17 @@ export class AppService {
 
     return this.userRepository.save(user);
   }
-  find(): Promise<User[]>{
+  find(): Promise<Customer[]>{
     return this.userRepository.find();
   }
   deletuser(id:number):string{
     this.userRepository.delete(id);
     return "user with id "+id +" has been deleted";
   }
-  findUserById(id: number): Promise<User|null>{
+  findUserById(id: number): Promise<Customer|null>{
    return this.userRepository.findOneBy({Id:id})
   }
-  async deposit(accountNumber: number,amount:number, description:string): Promise<User|string|null>{
+  async deposit(accountNumber: number,amount:number, description:string): Promise<Customer|string|null>{
    
    const user=await this.userRepository.findOne({where:{AccountNumber:accountNumber}})
  if(!user){
@@ -60,7 +60,7 @@ export class AppService {
  return"please try again"
   }
 }
-  async withdraw(accountNumber: number,amount:number, description:string): Promise<User|string|null|undefined>{
+  async withdraw(accountNumber: number,amount:number, description:string): Promise<Customer|string|null|undefined>{
      const dailymax=10000;
    const user=await this.userRepository.findOne({where:{AccountNumber:accountNumber}})
  if(!user){
