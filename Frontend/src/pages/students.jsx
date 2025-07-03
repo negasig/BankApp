@@ -19,7 +19,7 @@ findusers();
     },[users])
   return<>
   <h1>Customers</h1>
-<table className="border-solid table-column bg-white w-full p-2">
+<table className="border-solid w-full p-2">
     <thead>
         <th className='bg-green-700 text-white text-left'>FirstName</th>
         <th className='bg-green-700 text-white text-left'>LastName</th>
@@ -37,9 +37,6 @@ findusers();
  
     </tbody>
 </table>
-    
-       
-
-  
+ 
   </>
 }
