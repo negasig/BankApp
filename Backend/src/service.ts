@@ -54,7 +54,7 @@ export class AppService {
      user.Balance +=amount;
  await this.userRepository.save(user);
 
-  return `Your Account ${accountNumber} has been credited with ${amount} Birr. Your Current Balance is ${user.Balance}.`;
+  return `Your Account ${accountNumber} has been credited with ${amount} Birr for ${transaction.description}. Your Current Balance is ${user.Balance}.`;
   }
  else{
  return"please try again"
@@ -93,7 +93,7 @@ export class AppService {
   user.Balance -=amount;
   user.dailywithdrawl+=amount;
  await this.userRepository.save(user);
-  return `${amount} Birr deducted from Your Account  ${accountNumber} your new balance is ${user.Balance} Birr` ;
+  return `${amount} Birr debited from Your Account  ${accountNumber} for ${transaction.description} Your new balance is ${user.Balance} Birr.` ;
  }
  
    else{
@@ -117,5 +117,19 @@ if(user){
   return user;
 }
   return "Account not found";
+}
+async transfer(Accountnumber2:number, Accountnumber1:number,Amount:number):Promise<any>{
+  const account2=await this.transactionRepo.findOne({where:{AccountNumber:Accountnumber2}})
+  if(Amount<=0){
+    return "plase insert amount greater than 0"
+  }
+  else if(account2 && Amount>=0){
+    account2.Balance+=Amount;
+    this.transactionRepo.save(account2);
+return `you have transferd ${Amount} to ${Accountnumber2} `
+  }
+  else{
+    return `Account ${Accountnumber2} does not exists`
+  }
 }
 }
