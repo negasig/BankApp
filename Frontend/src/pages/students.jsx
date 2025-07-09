@@ -18,7 +18,12 @@ findusers();
 
     },[users])
   return<>
-  <h1>Customers</h1>
+  <h1>Customers</h1> 
+  <div>
+    <form>
+<input type='submit' value='Add User' className='ml-296 bg-green-400 text-amber-50' />
+    </form>
+  </div>
 <table className="border-solid w-full p-2">
     <thead>
         <th className='bg-green-700 text-white text-left'>FirstName</th>

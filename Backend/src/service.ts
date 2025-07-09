@@ -103,10 +103,10 @@ return"please try again";
 async login(username:string, password:string): Promise<any>{
   const user=await this.userRepository.findOne({ where: { username: username } });
  if(user?.password===password&& user.username===username){
-  return "loged in"
+  return true;
   }
   else{
-    return "incorrect credientials";
+    return false;
   }
 }
 async findtransactionofuser(AccountNumber:number):Promise<Transactionn|undefined|any>{

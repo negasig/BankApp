@@ -1,9 +1,12 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import '../output.css'
+import { Link, Outlet } from 'react-router-dom';
+import Login from './login';
 export default function Profile() {
     const[user, setUser]=useState([]);
    const[accountnumber, setAccountnumber]=useState(0);
+   const[login, setIslogedin]=useState(true);
     
     const urll="http://localhost:3001/students/transaction";
     const finduser=(event)=>{
@@ -19,6 +22,10 @@ export default function Profile() {
         })
     }
 
+if(!login){
+    return <Login />
+}
+else{
 
   return<>
   <h1>Customer details</h1>
@@ -40,7 +47,6 @@ export default function Profile() {
         <th className='bg-green-700 text-white text-left'>Description</th>
         <th className='bg-green-700 text-white text-left'>Balance</th>
         
-        
     </thead>
     <tbody>
 {user.map(u=>{
@@ -48,12 +54,8 @@ export default function Profile() {
          
         }
         )}
- 
     </tbody>
 </table>
-
-   
-
-  
   </>
+}
 }

@@ -1,7 +1,14 @@
+import { useState } from "react";
 import { Outlet, Link } from "react-router-dom";
+import Login from "./login";
 
-const Layout = () => {
-  return (
+const Layout = (props) => {
+const [isauthonticated, setIsAuthenticated]=useState(props.isauthonticated)
+if(!isauthonticated){
+ return <h1>Please login</h1>
+}
+else{
+return (
     <>
       <nav>
         <ul>
@@ -21,8 +28,12 @@ const Layout = () => {
       </nav>
 
       <Outlet />
+      
     </>
+
   )
+}
+
 };
 
 export default Layout;
