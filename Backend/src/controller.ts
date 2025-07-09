@@ -43,4 +43,8 @@ export class AppController {
   findtransaction(@Body() customerdto:CreateUserDto):Promise<Transactionn>{
 return this.appService.findtransactionofuser(customerdto.AccountNumber);
   }
+  @Post("transfer")
+  transfer(@Body() cu){
+    return this.appService.transfer()
+  }
 }
