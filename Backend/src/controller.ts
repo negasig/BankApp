@@ -44,7 +44,8 @@ export class AppController {
 return this.appService.findtransactionofuser(customerdto.AccountNumber);
   }
   @Post("transfer")
-  transfer(@Body() cu){
-    return this.appService.transfer()
+  transfer(@Body() body:any):Promise<any>{
+   const {AccountNumber1, AccountNumber2, amount}=body;
+    return this.appService.transfer(AccountNumber1, AccountNumber2, amount)
   }
 }
