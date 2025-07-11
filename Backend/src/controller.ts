@@ -44,7 +44,7 @@ export class AppController {
 return this.appService.findtransactionofuser(customerdto.AccountNumber);
   }
   @Post("transfer")
-  transfer(@Body() cu){
-    return this.appService.transfer()
+  transfer(@Body() cus:CreateUserDto){
+    return this.appService.transfer(cus.AccountNumber,cus.Balance)
   }
 }

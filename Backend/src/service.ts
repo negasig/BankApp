@@ -118,7 +118,7 @@ if(user){
 }
   return "Account not found";
 }
-async transfer(Accountnumber2:number, Accountnumber1:number,Amount:number):Promise<any>{
+async transfer(Accountnumber2:number, Amount:number):Promise<any>{
   const account2=await this.transactionRepo.findOne({where:{AccountNumber:Accountnumber2}})
   if(Amount<=0){
     return "plase insert amount greater than 0"
