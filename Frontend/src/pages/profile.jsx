@@ -6,7 +6,7 @@ import Login from './login';
 export default function Profile() {
     const[user, setUser]=useState([]);
    const[accountnumber, setAccountnumber]=useState(0);
-   const[login, setIslogedin]=useState(true);
+   const[login, setIslogedin]=useState(localStorage.getItem("login"));
     
     const urll="http://localhost:3001/students/transaction";
     const finduser=(event)=>{
@@ -22,13 +22,7 @@ export default function Profile() {
         })
     }
 
-if(!login){
-    return <Login />
-}
-else{
-
-  return<>
-  <h1>Customer details</h1>
+return login?<><h1>Customer details</h1>
   <div>
    <form onSubmit={finduser}>
     <label htmlFor="">Enter Account number</label>
@@ -56,6 +50,6 @@ else{
         )}
     </tbody>
 </table>
-  </>
-}
+  </>:<Login />
+  
 }

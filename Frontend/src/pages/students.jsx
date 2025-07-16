@@ -1,9 +1,10 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import '../output.css'
+import Login from './login';
 export default function Students() {
     const[users, setUsers]=useState([]);
-   
+    const[login, setIslogedin]=useState(localStorage.getItem("login"));
     
     const url="http://localhost:3001/students/findCustomers";
     const findusers=()=>{
@@ -17,7 +18,7 @@ export default function Students() {
 findusers();
 
     },[users])
-  return<>
+  return login?<>
   <h1>Customers</h1> 
   <div>
     <form>
@@ -43,5 +44,5 @@ findusers();
     </tbody>
 </table>
  
-  </>
+  </>:<Login />
 }

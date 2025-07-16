@@ -118,18 +118,27 @@ if(user){
 }
   return "Account not found";
 }
-async transfer(Accountnumber2:number, Amount:number):Promise<any>{
-  const account2=await this.transactionRepo.findOne({where:{AccountNumber:Accountnumber2}})
+async transfer(AccountNumber1:number,  AccountNumber2:number, Amount:number):Promise<any>{
+  const customer1=await this.userRepository.findOne({where:{AccountNumber: AccountNumber1}})
+  const customer2=await this.userRepository.findOne({where:{AccountNumber: AccountNumber2}})
+
   if(Amount<=0){
     return "plase insert amount greater than 0"
   }
-  else if(account2 && Amount>=0){
-    account2.Balance+=Amount;
-    this.transactionRepo.save(account2);
-return `you have transferd ${Amount} to ${Accountnumber2} `
+  if(!customer1 || !customer2){
+    return "Chceck your accounts"
   }
-  else{
-    return `Account ${Accountnumber2} does not exists`
+  else {
+ 
+    customer1.Balance-=Amount;
+       
+    customer2.Balance+=Amount;
+     await this.userRepository.save(customer1);
+    await this.userRepository.save(customer2);
+
+    
+return `you have transferd ${Amount} Birr to ${AccountNumber2} `;
+  
   }
 }
 }

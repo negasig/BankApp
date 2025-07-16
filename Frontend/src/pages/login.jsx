@@ -1,16 +1,18 @@
 import axios from 'axios';
-import React, { createContext, useContext, useState } from 'react'
+import React, { createContext, useContext, useEffect, useState } from 'react'
 import Layout from './layout';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
-       const[isauthonticated, setIsAuthenticated]=useState(false);
+       const[isauthonticated, setIsAuthenticated]=useState(localStorage.getItem("login"));
        const[username, setUsername]=useState("")
        const[password, setPassword]=useState("")
-  
+      const nav=useNavigate();
 
     const urll="http://localhost:3001/students/signin";
+
     const handlelogin=(event)=>{
-       event.preventDefault();
+      event.preventDefault();
         axios({
           method:'Post',
           url:urll,
@@ -19,20 +21,27 @@ function Login() {
          password:password
           }
         }).then(res=>{
-          setIsAuthenticated(res.data);
+          
+              setIsAuthenticated(res.data)
+              localStorage.setItem("login", res.data)
         })
+        if(isauthonticated){
+          nav("/home")
+        }
+        else{
+          nav("/")
+        }
     }
-if(isauthonticated){
-return <Layout isauthonticated={isauthonticated}  />
-} 
-   return <>
+
+
+return<>
       <div>login</div>
-    <form onSubmit={handlelogin}>
+    <form>
         <label htmlFor="username">username</label>
-        <input type='text' id='username' placeholder='enter username' onChange={(e)=>setUsername(e.target.value)}/><br/>
+        <input type='text' id='username' autoComplete='off' placeholder='enter username' onChange={(e)=>setUsername(e.target.value)}/><br/>
         <label htmlFor="password" >password</label>
-        <input type='password' id='password' placeholder='enter password' onChange={(e)=>setPassword(e.target.value)} />
-        <input type="submit" />
+        <input type='password' id='password' autoComplete='off' placeholder='enter password' onChange={(e)=>setPassword(e.target.value)} />
+        <button onClick={handlelogin}>Login</button>
     </form>
   </>
  

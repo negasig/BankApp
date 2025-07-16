@@ -1,14 +1,29 @@
-import { useState } from "react";
-import { Outlet, Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Outlet, Link, useNavigate } from "react-router-dom";
 import Login from "./login";
 
-const Layout = (props) => {
-const [isauthonticated, setIsAuthenticated]=useState(props.isauthonticated)
-if(!isauthonticated){
- return <h1>Please login</h1>
+const Layout = () => {
+  const nav=useNavigate();
+const [isauthonticated, setIsAuthenticated]=useState(localStorage.getItem("login"))
+
+const handlelogout=(event)=>{
+  event.preventDefault();
+localStorage.removeItem("login")
+localStorage.clear("login")
+setIsAuthenticated(localStorage.getItem("login"));
+  nav("/")
 }
-else{
-return (
+if(!isauthonticated){
+  nav("/")
+}
+useEffect(()=>{
+  const loginStatus = localStorage.getItem("login");
+  setIsAuthenticated(loginStatus);
+   if (!loginStatus || loginStatus === "false") {
+    nav("/");
+  }
+},[nav])
+return isauthonticated?  
     <>
       <nav>
         <ul>
@@ -26,13 +41,11 @@ return (
           </li>
         </ul>
       </nav>
-
+ <button onClick={handlelogout}>logout</button>
       <Outlet />
       
     </>
-
-  )
-}
+:<Login />
 
 };
 
