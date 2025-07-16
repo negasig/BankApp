@@ -1,10 +1,11 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import '../output.css'
+import Login from './login';
 export default function Profile() {
     const[user, setUser]=useState([]);
    const[accountnumber, setAccountnumber]=useState(0);
-    
+    const[islogedin, setislogedin]=useState(localStorage.getItem("login"))
     const urll="http://localhost:3001/students/transaction";
     const finduser=(event)=>{
        event.preventDefault();
@@ -20,7 +21,7 @@ export default function Profile() {
     }
 
 
-  return<>
+  return islogedin?<>
   <h1>Customer details</h1>
   <div>
    <form onSubmit={finduser}>
@@ -55,5 +56,5 @@ export default function Profile() {
    
 
   
-  </>
+  </>:<Login />
 }

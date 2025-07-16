@@ -1,9 +1,10 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import '../output.css'
+import Login from './login';
 export default function Students() {
     const[users, setUsers]=useState([]);
-   
+   const[islogedin, setislogedin]=useState(localStorage.getItem("login"))
     
     const url="http://localhost:3001/students/findCustomers";
     const findusers=()=>{
@@ -14,10 +15,10 @@ export default function Students() {
         )
     }
     useEffect(()=>{
-findusers();
+     findusers();
 
     },[users])
-  return<>
+  return islogedin?<>
   <h1>Customers</h1>
 <table className="border-solid w-full p-2">
     <thead>
@@ -38,5 +39,5 @@ findusers();
     </tbody>
 </table>
  
-  </>
+  </>:<Login />
 }
