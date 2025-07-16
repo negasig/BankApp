@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 export default function Students() {
     const[users, setUsers]=useState([]);
    const[islogedin, setislogedin]=useState(localStorage.getItem("login"))
-    const nav=useNavigate();
+
     const url="http://localhost:3001/students/findCustomers";
     const findusers=()=>{
         axios.get(url).then(

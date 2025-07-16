@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Outlet, Link, useNavigate } from "react-router-dom";
 import Login from "./login";
-
+import '../output.css'
 const Layout = () => {
       const nav=useNavigate();
       const[islogedin, setislogedin]=useState(localStorage.getItem("login"))
@@ -17,10 +17,10 @@ const Layout = () => {
     },[islogedin])
   return islogedin?
     <>
-      <nav>
+      <nav className='bg-amber-700 text-amber-200'>
         <ul>
           <li>
-            <Link to="/customers">Home</Link>
+            <Link to="/customers" className="bg-amber-400">Home</Link>
           </li>
           <li>
             <Link to="/about">About</Link>
@@ -33,7 +33,7 @@ const Layout = () => {
           </li>
         </ul>
       </nav>
- <button onClick={handlelogout}>login</button>
+ <button onClick={handlelogout}>logout</button>
       <Outlet />
     </>
   :<Login />
