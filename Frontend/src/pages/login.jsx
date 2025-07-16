@@ -1,50 +1,43 @@
 import axios from 'axios';
-import React, { createContext, useContext, useEffect, useState } from 'react'
-import Layout from './layout';
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import Layout from './layout';
 
-function Login() {
-       const[isauthonticated, setIsAuthenticated]=useState(localStorage.getItem("login"));
-       const[username, setUsername]=useState("")
-       const[password, setPassword]=useState("")
-      const nav=useNavigate();
+export default function Login() {
+    const[username, setUsername]=useState("")
+    const[password, setPassword]=useState("")
+    const[islogedin, setislogedin]=useState(false)
+        const urll="http://localhost:3001/students/signin";
+        const nav=useNavigate();
+    const handlesubmit=(e)=>{
 
-    const urll="http://localhost:3001/students/signin";
-
-    const handlelogin=(event)=>{
-      event.preventDefault();
         axios({
-          method:'Post',
-          url:urll,
-          data:{
-         username:username,
-         password:password
-          }
-        }).then(res=>{
-          
-              setIsAuthenticated(res.data)
-              localStorage.setItem("login", res.data)
-        })
-        if(isauthonticated){
-          nav("/home")
-        }
-        else{
-          nav("/")
-        }
+               method:'Post',
+               url:urll,
+               data:{
+              username:username,
+              password:password
+               }
+             }).then(res=>{
+               localStorage.setItem("login", res.data);
+             })
     }
-
-
-return<>
+    useEffect(()=>{
+  const log=localStorage.getItem("login")
+  if(log==="true"){
+    setislogedin(true);
+  }
+    },[islogedin])
+  return islogedin?<Layout />:<>
+  
       <div>login</div>
-    <form>
-        <label htmlFor="username">username</label>
-        <input type='text' id='username' autoComplete='off' placeholder='enter username' onChange={(e)=>setUsername(e.target.value)}/><br/>
-        <label htmlFor="password" >password</label>
-        <input type='password' id='password' autoComplete='off' placeholder='enter password' onChange={(e)=>setPassword(e.target.value)} />
-        <button onClick={handlelogin}>Login</button>
-    </form>
+      <form onSubmit={handlesubmit}>
+        <input type='text' placeholder='username' required onChange={(e)=>setUsername(e.target.value)} />
+        <input type='password' placeholder='password' required onChange={(e)=>setPassword(e.target.value)} />
+        <input type='submit' />
+      </form>
   </>
- 
-}
 
-export default Login
+
+  
+}

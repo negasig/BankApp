@@ -1,6 +1,6 @@
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import About from './about';
+import About from './pages/about';
 import './App.css';
 import './output.css'
 import Students from './pages/students';

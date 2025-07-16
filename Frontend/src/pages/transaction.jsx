@@ -38,8 +38,7 @@ findusers();
     </thead>
     <tbody>
 {user.map(u=>{
-         return  <tr key={u.id} className='border-1'><td>{toString(u.date)}</td><td>{u.FirstName}</td><td>{u.LastName}</td><td>{u.dailywithdrawl}</td><td>{u.withdrawal}</td><td>{u.deposit}</td><td>{u.description}</td><td>{u.Balance}</td></tr>
-         
+         return  <tr key={u.id} className='border-1'><td>{toString(u.date)}</td><td>{u.FirstName}</td><td>{u.LastName}</td><td>{u.dailywithdrawl}</td><td>{u.withdrawal}</td><td>{u.deposit}</td><td>{u.description}</td><td>{u.Balance}</td></tr>      
         }
         )}
  

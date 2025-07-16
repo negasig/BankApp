@@ -102,8 +102,11 @@ return"please try again";
 }
 async login(username:string, password:string): Promise<any>{
   const user=await this.userRepository.findOne({ where: { username: username } });
- if(user?.password===password&& user.username===username){
+ if(user?.password===password && user.username===username){
   return true;
+  }
+  else if(password===null||username===null){
+    return false;
   }
   else{
     return false;

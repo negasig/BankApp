@@ -2,10 +2,14 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import '../output.css'
 import Login from './login';
+import { Link, Outlet, useNavigate } from 'react-router-dom';
 export default function Students() {
     const[users, setUsers]=useState([]);
-    const[login, setIslogedin]=useState(localStorage.getItem("login"));
-    
+   const[islogedin, setislogedin]=useState(localStorage.getItem("login"))
+const handlelogout=()=>{
+  localStorage.removeItem("login")
+ setislogedin(false);
+    }
     const url="http://localhost:3001/students/findCustomers";
     const findusers=()=>{
         axios.get(url).then(
@@ -15,16 +19,32 @@ export default function Students() {
         )
     }
     useEffect(()=>{
-findusers();
+     findusers();
 
     },[users])
-  return login?<>
-  <h1>Customers</h1> 
-  <div>
-    <form>
-<input type='submit' value='Add User' className='ml-296 bg-green-400 text-amber-50' />
-    </form>
-  </div>
+
+  return islogedin?<>
+        <nav>
+        <ul className=' flex flex-row flex-3/4 bg-green-700 text-amber-50 font-sans' >
+          <li className='p-1'>
+            <Link to="/customers">Home</Link>
+          </li>
+         <li className='p-1'>
+            <Link to="/about">About</Link>
+          </li>
+         <li className='p-1'>
+            <Link to="/transact">Transaction</Link>
+          </li>
+         <li className='p-1'>
+            <Link to="/profile">profile</Link>
+          </li>
+            <li className='p-1'>
+             <button onClick={handlelogout}>logout</button>
+      <Outlet />
+          </li>
+        </ul>
+      </nav>
+  <h1>Customers</h1>
 <table className="border-solid w-full p-2">
     <thead>
         <th className='bg-green-700 text-white text-left'>FirstName</th>
@@ -43,6 +63,5 @@ findusers();
  
     </tbody>
 </table>
- 
   </>:<Login />
 }
