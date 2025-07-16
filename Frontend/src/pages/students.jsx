@@ -2,10 +2,11 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import '../output.css'
 import Login from './login';
+import { useNavigate } from 'react-router-dom';
 export default function Students() {
     const[users, setUsers]=useState([]);
    const[islogedin, setislogedin]=useState(localStorage.getItem("login"))
-    
+    const nav=useNavigate();
     const url="http://localhost:3001/students/findCustomers";
     const findusers=()=>{
         axios.get(url).then(
@@ -18,6 +19,7 @@ export default function Students() {
      findusers();
 
     },[users])
+
   return islogedin?<>
   <h1>Customers</h1>
 <table className="border-solid w-full p-2">
@@ -38,6 +40,6 @@ export default function Students() {
  
     </tbody>
 </table>
- 
+
   </>:<Login />
 }
