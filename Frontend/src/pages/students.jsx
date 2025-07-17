@@ -27,7 +27,10 @@ const handlelogout=()=>{
         <nav>
         <ul className=' flex flex-row flex-3/4 bg-green-700 text-amber-50 font-sans' >
           <li className='p-1'>
-            <Link to="/customers">Home</Link>
+            <Link to="/home">Home</Link>
+          </li>
+          <li className='p-1'>
+            <Link to="/customers">Customers</Link>
           </li>
          <li className='p-1'>
             <Link to="/about">About</Link>
