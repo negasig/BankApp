@@ -6,6 +6,7 @@ import Layout from './layout';
 export default function Login() {
     const[username, setUsername]=useState("")
     const[password, setPassword]=useState("")
+    const[err, setError]=useState("")
     const[islogedin, setislogedin]=useState(false)
         const urll="http://localhost:3001/students/signin";
         const nav=useNavigate();
@@ -26,6 +27,9 @@ export default function Login() {
   const log=localStorage.getItem("login")
   if(log==="true"){
     setislogedin(true);
+  }
+  else{
+    setError("Invalid Username or password")
   }
     },[islogedin])
   return islogedin?<Layout />:<>
