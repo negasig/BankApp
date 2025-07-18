@@ -10,7 +10,7 @@ export default function About() {
     }
   return  islogedin==="true"?<>
       <nav>
-        <ul className=' flex flex-row flex-3/4 bg-green-700 text-amber-50 font-sans' >
+        <ul className=' flex flex-row flex-3/4 bg-sky-500 text-amber-50 font-sans' >
           <li className='p-1'>
             <Link to="/home">Home</Link>
           </li>

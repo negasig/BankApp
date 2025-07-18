@@ -44,7 +44,7 @@ export default function Login() {
         <label htmlFor="password">Password</label><br></br>
         <input type='password' placeholder='password' id='password' required onChange={(e)=>setPassword(e.target.value)} className='p-2 border-1 w-md rounded-lg'/><br></br>
 
-        <button onClick={handlesubmit} className='text-purple-500 hover:border-transparent cursor-pointer active:bg-purple-700 border-2 border-purple-200 hover:bg-purple-600 hover:text-white shadow-xl/20 p-1 pl-5 pr-5 mt-2 font-bold rounded-full'>LOGIN</button>
+        <button onClick={handlesubmit} className='text-white hover:border-transparent cursor-pointer active:bg-sky-700 border-2 bg-sky-500 border-purple-200 hover:bg-purple-600 hover:text-white shadow-xl/20 p-1 pl-5 pr-5 mt-2 font-bold rounded-full'>LOGIN</button>
       </form>
         </div>
   </>  

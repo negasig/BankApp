@@ -21,6 +21,7 @@
     --color-emerald-600: oklch(59.6% 0.145 163.225);
     --color-cyan-400: oklch(78.9% 0.154 211.53);
     --color-sky-500: oklch(68.5% 0.169 237.323);
+    --color-sky-700: oklch(50% 0.134 242.749);
     --color-blue-50: oklch(97% 0.014 254.604);
     --color-purple-200: oklch(90.2% 0.063 306.703);
     --color-purple-400: oklch(71.4% 0.203 305.504);
@@ -530,6 +531,11 @@
   .active\:bg-purple-700 {
     &:active {
       background-color: var(--color-purple-700);
+    }
+  }
+  .active\:bg-sky-700 {
+    &:active {
+      background-color: var(--color-sky-700);
     }
   }
 }
