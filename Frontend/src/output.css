@@ -229,8 +229,14 @@
   .ml-80 {
     margin-left: calc(var(--spacing) * 80);
   }
+  .ml-96 {
+    margin-left: calc(var(--spacing) * 96);
+  }
   .ml-100 {
     margin-left: calc(var(--spacing) * 100);
+  }
+  .ml-120 {
+    margin-left: calc(var(--spacing) * 120);
   }
   .ml-180 {
     margin-left: calc(var(--spacing) * 180);
@@ -282,6 +288,9 @@
   }
   .border-collapse {
     border-collapse: collapse;
+  }
+  .cursor-pointer {
+    cursor: pointer;
   }
   .resize {
     resize: both;
