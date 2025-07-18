@@ -23,7 +23,7 @@ const handlelogout=()=>{
 
     },[users])
 
-  return islogedin?<>
+  return islogedin==="true"?<>
         <nav>
         <ul className=' flex flex-row flex-3/4 bg-green-700 text-amber-50 font-sans' >
           <li className='p-1'>
@@ -36,7 +36,7 @@ const handlelogout=()=>{
             <Link to="/about">About</Link>
           </li>
          <li className='p-1'>
-            <Link to="/transact">Transaction</Link>
+            <Link to="/acc">MyAccount</Link>
           </li>
          <li className='p-1'>
             <Link to="/profile">profile</Link>

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import '../output.css'
 import { Link, Outlet } from 'react-router-dom';
 import Login from './login';
-export default function Transaction() {
+export default function Myaccount() {
     const[user, setUser]=useState([]);
    const[accountnumber, setAccountnumber]=useState(0);
    const[islogedin, setislogedin]=useState(localStorage.getItem("login"))
@@ -27,7 +27,7 @@ findusers();
   localStorage.removeItem("login")
  setislogedin(false);
     }
-  return islogedin?<>
+  return islogedin==="true"?<>
         <nav>
         <ul className=' flex flex-row flex-3/4 bg-green-700 text-amber-50 font-sans' >
           <li className='p-1'>
@@ -40,7 +40,7 @@ findusers();
             <Link to="/about">About</Link>
           </li>
          <li className='p-1'>
-            <Link to="/transact">Transaction</Link>
+            <Link to="/acc">MyAccount</Link>
           </li>
          <li className='p-1'>
             <Link to="/profile">profile</Link>
@@ -67,7 +67,7 @@ findusers();
     </thead>
     <tbody>
 {user.map(u=>{
-         return  <tr key={u.id} className='border-1'><td>{toString(u.date)}</td><td>{u.FirstName}</td><td>{u.LastName}</td><td>{u.dailywithdrawl}</td><td>{u.withdrawal}</td><td>{u.deposit}</td><td>{u.description}</td><td>{u.Balance}</td></tr>      
+         return  <tr key={u.id} className='border-1'><td>{u.date}</td><td>{u.FirstName}</td><td>{u.LastName}</td><td>{u.dailywithdrawl}</td><td>{u.withdrawal}</td><td>{u.deposit}</td><td>{u.description}</td><td>{u.Balance}</td></tr>      
         }
         )}
  

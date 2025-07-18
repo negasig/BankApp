@@ -29,7 +29,7 @@ const Layout = () => {
             <Link to="/about">About</Link>
           </li>
          <li className='p-1'>
-            <Link to="/transact">Transaction</Link>
+            <Link to="/acc">MayAccount</Link>
           </li>
          <li className='p-1'>
             <Link to="/profile">profile</Link>
