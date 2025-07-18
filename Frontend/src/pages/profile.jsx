@@ -6,6 +6,7 @@ import { Link, Outlet } from 'react-router-dom';
 export default function Profile() {
     const[user, setUser]=useState([]);
    const[accountnumber, setAccountnumber]=useState(0);
+   const[error,setError]=useState("")
     const[islogedin, setislogedin]=useState(localStorage.getItem("login"))
     const urll="http://localhost:3001/students/transaction";
     const handlelogout=()=>{
@@ -22,7 +23,9 @@ export default function Profile() {
           }
         }).then(res=>{
           setUser(res.data);
-        })
+        }).catch(
+          setError("Account not found")
+        )
     }
 
 return islogedin?<>
@@ -48,10 +51,11 @@ return islogedin?<>
       </nav>
 
 <h1>Customer details</h1>
+<h1>{error}</h1>
   <div>
    <form onSubmit={finduser}>
     <label htmlFor="">Enter Account number</label>
-    <input type='number'  onChange={(e)=>setAccountnumber(e.target.value)} placeholder='accountnumber' />
+    <input type='number' required onChange={(e)=>setAccountnumber(e.target.value)} placeholder='accountnumber' />
     <input type='submit'/>
     </form> 
 </div>

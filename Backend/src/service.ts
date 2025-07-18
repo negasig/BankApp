@@ -105,7 +105,7 @@ async login(username:string, password:string): Promise<any>{
  if(user?.password===password && user.username===username){
   return true;
   }
-  else if(password===null||username===null){
+  else if(password===""||username===""){
     return false;
   }
   else{

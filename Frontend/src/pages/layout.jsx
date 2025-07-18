@@ -18,7 +18,7 @@ const Layout = () => {
   return islogedin?
     <>
       <nav>
-        <ul className=' flex flex-row flex-3/4 bg-green-700 text-amber-50 font-sans' >
+        <ul className=' flex flex-row flex-3/4 bg-green-700 text-amber-50' >
           <li className='p-1'>
             <Link to="/customers">Home</Link>
           </li>

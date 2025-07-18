@@ -7,6 +7,7 @@ export default function Login() {
     const[username, setUsername]=useState("")
     const[password, setPassword]=useState("")
     const[islogedin, setislogedin]=useState(false)
+    const[errmsg, setErrmsg]=useState("")
         const urll="http://localhost:3001/students/signin";
         const nav=useNavigate();
     const handlesubmit=(e)=>{
@@ -29,7 +30,7 @@ export default function Login() {
   }
     },[islogedin])
   return islogedin?<Layout />:<>
-  
+      <h1 style={{color:"red"}}>{errmsg}</h1>
       <div>login</div>
       <form onSubmit={handlesubmit}>
         <input type='text' placeholder='username' required onChange={(e)=>setUsername(e.target.value)} />

@@ -177,6 +177,9 @@
   }
 }
 @layer utilities {
+  .float-end {
+    float: inline-end;
+  }
   .flex {
     display: flex;
   }
@@ -215,6 +218,9 @@
   }
   .flex-row {
     flex-direction: row;
+  }
+  .flex-row-reverse {
+    flex-direction: row-reverse;
   }
   .flex-wrap {
     flex-wrap: wrap;
