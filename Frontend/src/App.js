@@ -13,7 +13,7 @@ import Myaccount from './pages/myaccount';
 
 function App() {
   return <>
-<h1 className='w-full bg-sky-500 text-center text-2xl text-blue-50'>Welcome to ABC bank</h1>
+<h1 className='w-full  text-center text-2xl shadow-lg'>Welcome to ABC bank</h1>
  <BrowserRouter>
  <Routes>
   <Route path='/home'element={<Layout />} />

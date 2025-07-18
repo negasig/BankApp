@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Outlet, Link, useNavigate } from "react-router-dom";
 import Login from "./login";
 import '../output.css'
+import myimg from '../images/myimg.jpg'
 const Layout = () => {
       const nav=useNavigate();
       const[islogedin, setislogedin]=useState(localStorage.getItem("login"))
@@ -18,7 +19,7 @@ const Layout = () => {
   return islogedin?
     <>
       <nav>
-        <ul className=' flex flex-row flex-3/4 bg-green-700 text-amber-50 font-sans' >
+        <ul className=' flex flex-row flex-3/4 bg-white text-black font-sans font-semibold' >
           <li className='p-1'>
             <Link to="/home">Home</Link>
           </li>
@@ -41,6 +42,7 @@ const Layout = () => {
         </ul>
       </nav>
       <h1>Welcome to the best bank in the world</h1>
+      <img src={myimg} alt="aklk" style={{width:'100%'}}/>
     </>
   :<Login />
 };

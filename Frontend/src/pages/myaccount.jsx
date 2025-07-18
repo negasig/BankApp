@@ -29,7 +29,7 @@ findusers();
     }
   return islogedin==="true"?<>
         <nav>
-        <ul className=' flex flex-row flex-3/4 bg-green-700 text-amber-50 font-sans' >
+        <ul className=' flex flex-row flex-3/4 bg-white text-black font-sans font-semibold' >
           <li className='p-1'>
             <Link to="/home">Home</Link>
           </li>
@@ -54,14 +54,14 @@ findusers();
   <h1>Customer details</h1>
 <table className="border-solid bg-white w-full p-2">
     <thead>
-        <th className='bg-green-700 text-white text-left'>Date</th>
-        <th className='bg-green-700 text-white text-left'>FirstName</th>
-        <th className='bg-green-700 text-white text-left'>LastName</th>
-        <th className='bg-green-700 text-white text-left'>Dailywithdrawl</th>
-        <th className='bg-green-700 text-white text-left'>withdrawal</th>
-        <th className='bg-green-700 text-white text-left'>deposit</th>
-        <th className='bg-green-700 text-white text-left'>Description</th>
-        <th className='bg-green-700 text-white text-left'>Balance</th>
+        <th className=' text-black text-left'>Date</th>
+        <th className=' text-black text-left'>FirstName</th>
+        <th className=' text-black text-left'>LastName</th>
+        <th className=' text-black text-left'>Dailywithdrawl</th>
+        <th className=' text-black text-left'>withdrawal</th>
+        <th className=' text-black text-left'>deposit</th>
+        <th className=' text-black text-left'>Description</th>
+        <th className=' text-black text-left'>Balance</th>
         
         
     </thead>
