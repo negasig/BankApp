@@ -6,7 +6,7 @@ import { CreateUserDto } from './dto/CreateUserDto';
 import { error } from 'console';
 import { promises } from 'dns';
 import { Transactionn } from './model/transaction';
-
+import { JwtService } from '@nestjs/jwt';
 @Injectable()
 export class AppService {
   constructor(@InjectRepository(Customer) private readonly userRepository: Repository<Customer>, @InjectRepository(Transactionn) private readonly transactionRepo: Repository<Transactionn>,){}

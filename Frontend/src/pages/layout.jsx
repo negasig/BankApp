@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Outlet, Link, useNavigate } from "react-router-dom";
 import Login from "./login";
 import '../output.css'
+
 const Layout = () => {
       const nav=useNavigate();
       const[islogedin, setislogedin]=useState(localStorage.getItem("login"))
@@ -18,15 +19,18 @@ const Layout = () => {
   return islogedin?
     <>
       <nav>
-        <ul className=' flex flex-row flex-3/4 bg-green-700 text-amber-50' >
+        <ul className=' flex flex-row flex-3/4 bg-white text-sm/6 text-black font-sans pb-1 font-semibold shadow-lg' >
           <li className='p-1'>
-            <Link to="/customers">Home</Link>
+            <Link to="/home">Home</Link>
+          </li>
+          <li className='p-1'>
+            <Link to="/customers">Customers</Link>
           </li>
          <li className='p-1'>
             <Link to="/about">About</Link>
           </li>
          <li className='p-1'>
-            <Link to="/transact">Transaction</Link>
+            <Link to="/acc">MayAccount</Link>
           </li>
          <li className='p-1'>
             <Link to="/profile">profile</Link>
@@ -37,6 +41,8 @@ const Layout = () => {
           </li>
         </ul>
       </nav>
+      <h1>Welcome to the best bank in the world</h1>
+     
     </>
   :<Login />
 };
