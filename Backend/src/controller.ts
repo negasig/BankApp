@@ -1,7 +1,7 @@
 import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
 import { AppService } from './service';
 import { Customer } from './model/customer';
-import { CreateUserDto } from './dto/CreateUserDto';
+import { CreateUserDto } from './dto/CustomerDto';
 import { AppModule } from './module';
 import { Transactionn } from './model/transaction';
 
@@ -47,5 +47,9 @@ return this.appService.findtransactionofuser(customerdto.AccountNumber);
   transfer(@Body() body:any):Promise<any>{
    const {AccountNumber1, AccountNumber2, amount}=body;
     return this.appService.transfer(AccountNumber1, AccountNumber2, amount)
+  }
+  @Post("loginc")
+  loginc(@Body() customerdto:CreateUserDto):Promise<any>{
+    return this.appService.logincustomer(customerdto.username, customerdto.password);
   }
 }

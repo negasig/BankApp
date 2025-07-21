@@ -2,14 +2,14 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Customer } from './model/customer';
 import { Repository } from 'typeorm';
-import { CreateUserDto } from './dto/CreateUserDto';
+import { CreateUserDto } from './dto/CustomerDto';
 import { error } from 'console';
 import { promises } from 'dns';
 import { Transactionn } from './model/transaction';
-import { JwtService } from '@nestjs/jwt';
+import { JwtModule, JwtService } from '@nestjs/jwt';
 @Injectable()
 export class AppService {
-  constructor(@InjectRepository(Customer) private readonly userRepository: Repository<Customer>, @InjectRepository(Transactionn) private readonly transactionRepo: Repository<Transactionn>,){}
+  constructor(@InjectRepository(Customer) private jwtService: JwtService, private readonly userRepository: Repository<Customer>, @InjectRepository(Transactionn) private readonly transactionRepo: Repository<Transactionn>,){}
  create(createUserDto: CreateUserDto): Promise<Customer> {
     const user = new Customer();
     user.FirstName = createUserDto.firstName;
@@ -142,6 +142,18 @@ async transfer(AccountNumber1:number,  AccountNumber2:number, Amount:number):Pro
     
 return `you have transferd ${Amount} Birr to ${AccountNumber2} `;
   
+  }
+}
+async logincustomer(username:string, password:string):Promise<any>{
+ const user=await this.userRepository.findOne({ where: { username: username } });
+ if(user?.password===password && user.username===username){
+  return this.jwtService.sign(user.username);
+  }
+  else if(password===""||username===""){
+  return false;
+  }
+  else{
+  return false;
   }
 }
 }
