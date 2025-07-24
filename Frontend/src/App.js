@@ -10,6 +10,7 @@ import Manager from './pages/manager';
 import Profile from './pages/profile';
 import Login from './pages/login';
 import Myaccount from './pages/myaccount';
+import Clogin from './pages/customer';
 
 function App() {
   return <>
@@ -17,6 +18,7 @@ function App() {
  <BrowserRouter>
  <Routes>
   <Route path='/home'element={<Layout />} />
+    <Route path='/clogin'element={<Clogin />} />
   <Route path='/customers' element={<Students />} />
   <Route path='/about'element={<About />} />
   <Route path='/acc'element={< Myaccount/>} />
