@@ -9,7 +9,7 @@ import { Transactionn } from './model/transaction';
 import { JwtModule, JwtService } from '@nestjs/jwt';
 @Injectable()
 export class AppService {
-  constructor(@InjectRepository(Customer) private jwtService: JwtService, private readonly userRepository: Repository<Customer>, @InjectRepository(Transactionn) private readonly transactionRepo: Repository<Transactionn>,){}
+  constructor(@InjectRepository(Customer)  private readonly userRepository: Repository<Customer>, @InjectRepository(Transactionn) private readonly transactionRepo: Repository<Transactionn>,){}
  create(createUserDto: CreateUserDto): Promise<Customer> {
     const user = new Customer();
     user.FirstName = createUserDto.firstName;
