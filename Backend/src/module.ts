@@ -4,6 +4,7 @@ import { AppService } from './service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Customer } from './model/customer';
 import {Transactionn } from './model/transaction';
+import { JwtModule } from '@nestjs/jwt';
 
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -18,7 +19,7 @@ import {Transactionn } from './model/transaction';
     }),
     TypeOrmModule.forFeature([Customer, Transactionn]),],
   controllers: [AppController],
-  providers: [AppService,],
+  providers: [AppService,JwtModule],
 
 })
 export class AppModule {}
