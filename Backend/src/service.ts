@@ -7,9 +7,11 @@ import { error } from 'console';
 import { promises } from 'dns';
 import { Transactionn } from './model/transaction';
 import { JwtModule, JwtService } from '@nestjs/jwt';
+import { AuthService } from './authservice';
+import * as bcrypt from 'bcrypt';
 @Injectable()
 export class AppService {
-  constructor(@InjectRepository(Customer)  private readonly userRepository: Repository<Customer>, @InjectRepository(Transactionn) private readonly transactionRepo: Repository<Transactionn>,){}
+  constructor(@InjectRepository(Customer) private authservice:AuthService, private  readonly userRepository: Repository<Customer>, @InjectRepository(Transactionn) private readonly transactionRepo: Repository<Transactionn>,){}
  create(createUserDto: CreateUserDto): Promise<Customer> {
     const user = new Customer();
     user.FirstName = createUserDto.firstName;
@@ -30,6 +32,9 @@ export class AppService {
   }
   findUserById(id: number): Promise<Customer|null>{
    return this.userRepository.findOneBy({Id:id})
+  }
+   findUserByUsername(username: string): Promise<Customer|null>{
+   return this.userRepository.findOneBy({username:username})
   }
   async deposit(accountNumber: number,amount:number, description:string): Promise<Customer|string|null>{
    
@@ -145,15 +150,11 @@ return `you have transferd ${Amount} Birr to ${AccountNumber2} `;
   }
 }
 async logincustomer(username:string, password:string):Promise<any>{
- const user=await this.userRepository.findOne({ where: { username: username } });
- if(user?.password===password && user.username===username){
-  return this.jwtService.sign(user.username);
+ const user=await this.authservice.validateUser(username, password);
+ 
+    if (!user) {
+      return { message: 'Invalid credentials' };
+    }
+    return this.authservice.login(user);
   }
-  else if(password===""||username===""){
-  return false;
-  }
-  else{
-  return false;
-  }
-}
 }
