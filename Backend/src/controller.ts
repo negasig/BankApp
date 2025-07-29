@@ -5,11 +5,11 @@ import { CreateUserDto } from './dto/CustomerDto';
 import { AppModule } from './module';
 import { Transactionn } from './model/transaction';
 
-@Controller("students/")
+@Controller("customers/")
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @Post("addUser")
+  @Post("addcustomer")
   create(@Body() createuse: CreateUserDto): Promise< Customer> {
     return this.appService.create(createuse);
   }
@@ -48,8 +48,8 @@ return this.appService.findtransactionofuser(customerdto.AccountNumber);
    const {AccountNumber1, AccountNumber2, amount}=body;
     return this.appService.transfer(AccountNumber1, AccountNumber2, amount)
   }
-  @Post("loginc")
-  loginc(@Body() customerdto:CreateUserDto):Promise<any>{
-    return this.appService.logincustomer(customerdto.username, customerdto.password);
+  @Post("logincs")
+  async logincust(@Body() customerd:CreateUserDto){
+return this.appService.logincustomer(customerd.username, customerd.password);
   }
 }

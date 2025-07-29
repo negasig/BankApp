@@ -6,11 +6,13 @@ import { Link, Outlet, useNavigate } from 'react-router-dom';
 export default function Students() {
     const[users, setUsers]=useState([]);
    const[islogedin, setislogedin]=useState(localStorage.getItem("login"))
-const handlelogout=()=>{
+   const nav=useNavigate();
+   const handlelogout=()=>{
   localStorage.removeItem("login")
  setislogedin(false);
+  nav("/")
     }
-    const url="http://localhost:3001/students/findCustomers";
+    const url="http://localhost:3002/customers/findCustomers";
     const findusers=()=>{
         axios.get(url).then(
             res=>{

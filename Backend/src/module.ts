@@ -7,6 +7,7 @@ import {Transactionn } from './model/transaction';
 import { JwtModule, JwtService } from '@nestjs/jwt';
 
 
+
 @Module({
   imports: [TypeOrmModule.forRoot({
       type: 'mysql',
@@ -18,13 +19,12 @@ import { JwtModule, JwtService } from '@nestjs/jwt';
       entities: [Customer, Transactionn],
       synchronize: true,
     }),
-   JwtModule.register({
-      secret: 'your-secret-key',
+    TypeOrmModule.forFeature([Customer, Transactionn]), JwtModule.register({
+      secret: 'negasi_g', // move to .env for production
       signOptions: { expiresIn: '1h' },
-    }),
-    TypeOrmModule.forFeature([Customer, Transactionn]),],
-   exports:[AppService],
+    })],
   controllers: [AppController],
   providers: [AppService],
+ exports :[AppService, JwtModule]
 })
 export class AppModule {}

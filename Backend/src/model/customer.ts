@@ -18,6 +18,8 @@ Balance:number;
 @Column()
 dailywithdrawl:number;
 @Column()
+role:string;
+@Column()
 username:string;
 @Column()
 password:string;

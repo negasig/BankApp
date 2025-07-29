@@ -2,16 +2,18 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import '../output.css'
 import Login from './login';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useNavigate } from 'react-router-dom';
 export default function Profile() {
     const[user, setUser]=useState([]);
    const[accountnumber, setAccountnumber]=useState(0);
    const[error, setError]=useState("")
     const[islogedin, setislogedin]=useState(localStorage.getItem("login"))
-    const urll="http://localhost:3001/students/transaction";
+    const urll="http://localhost:3002/customers/transaction";
+    const nav=useNavigate();
     const handlelogout=()=>{
   localStorage.removeItem("login")
  setislogedin(false);
+ nav("/")
     }
     const finduser=(event)=>{
        event.preventDefault();

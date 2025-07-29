@@ -2,12 +2,14 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import Layout from './layout';
-export default function Login() {
+import { jwtDecode } from 'jwt-decode';
+export default function Logintwo() {
     const[username, setUsername]=useState("")
     const[password, setPassword]=useState("")
     const[islogedin, setislogedin]=useState(false)
      const[errmsg, seterrmsg]=useState("")
-        const urll="http://localhost:3002/customers/signin";
+     const [role, setRole]=useState("")
+        const urll="http://localhost:3002/customers/logincs";
         const nav=useNavigate();
     const handlesubmit=(e)=>{
 
@@ -19,21 +21,41 @@ export default function Login() {
               password:password
                }
              }).then(res=>{
-               localStorage.setItem("login", res.data);
-             })
+             if(JSON.stringify(res).includes(".")){
+
+             
+               localStorage.setItem("logintwo", res.data);
+             }       else{
+             seterrmsg(res.data);
+
+             }
+            })
+       
+            
+    }
+    const handlelogin=()=>{
+       const log=localStorage.getItem("logintwo")
+  if(log && log.length>0){
+    const decoded=jwtDecode(JSON.stringify(log));
+    setRole(decoded.role);
+  }
+ if (role==="admin"){
+    nav("/admin")
+  }
+  else if(role==="user"){
+    nav("/user")
+  }
+  else if(role==="") {
+seterrmsg("Invalidd Credientials")
+nav("/logtwo")
+  }
     }
     useEffect(()=>{
-  const log=localStorage.getItem("login")
-  
-  if(log==="true"){
-    setislogedin(true);
-    nav("/home")
-  }
-  else if(log==="false"){
-    seterrmsg("Invalid Credientials")
-    nav("/")
-  }
-    },[islogedin])
+
+    handlelogin();
+       
+    },[role])
+    
   return islogedin==="true"?<Layout />:<>
   <div className=' text-sm font-bold flex items-center justify-center'>Login</div><br/>
         

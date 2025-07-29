@@ -2,12 +2,12 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import Layout from './layout';
-export default function Login() {
+export default function Clogin() {
     const[username, setUsername]=useState("")
     const[password, setPassword]=useState("")
     const[islogedin, setislogedin]=useState(false)
      const[errmsg, seterrmsg]=useState("")
-        const urll="http://localhost:3002/customers/signin";
+        const urll="http://localhost:3002/customers/loginc";
         const nav=useNavigate();
     const handlesubmit=(e)=>{
 
@@ -22,21 +22,9 @@ export default function Login() {
                localStorage.setItem("login", res.data);
              })
     }
-    useEffect(()=>{
-  const log=localStorage.getItem("login")
-  
-  if(log==="true"){
-    setislogedin(true);
-    nav("/home")
-  }
-  else if(log==="false"){
-    seterrmsg("Invalid Credientials")
-    nav("/")
-  }
-    },[islogedin])
   return islogedin==="true"?<Layout />:<>
   <div className=' text-sm font-bold flex items-center justify-center'>Login</div><br/>
-        
+        <h1>DD</h1>
       <h1 className='font-bold mb-0.5 text-red-500 flex items-center justify-center'>{errmsg}</h1><br></br>
    <div className='flex items-center justify-center flex-wrap mt-1'>
 
