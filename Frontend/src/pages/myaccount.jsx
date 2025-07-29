@@ -7,7 +7,7 @@ export default function Myaccount() {
     const[user, setUser]=useState([]);
    const[accountnumber, setAccountnumber]=useState(0);
    const[islogedin, setislogedin]=useState(localStorage.getItem("login"))
-    const urll="http://localhost:3001/students/transaction";
+    const urll="http://localhost:3002/customers/transaction";
     const findusers=()=>{
         axios({
           method:'Post',

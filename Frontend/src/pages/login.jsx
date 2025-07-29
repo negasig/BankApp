@@ -7,7 +7,7 @@ export default function Login() {
     const[password, setPassword]=useState("")
     const[islogedin, setislogedin]=useState(false)
      const[errmsg, seterrmsg]=useState("")
-        const urll="http://localhost:3001/students/signin";
+        const urll="http://localhost:3002/customers/signin";
         const nav=useNavigate();
     const handlesubmit=(e)=>{
 

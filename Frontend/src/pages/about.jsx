@@ -1,12 +1,14 @@
 import React, { useState } from 'react'
 import "../output.css"
 import Login from './login'
-import { Link, Outlet } from 'react-router-dom'
+import { Link, Outlet, useNavigate } from 'react-router-dom'
 export default function About() {
   const[islogedin, setislogedin]=useState(localStorage.getItem("login"))
+  const nav=useNavigate();
         const handlelogout=()=>{
   localStorage.removeItem("login")
  setislogedin(false);
+  nav("/")
     }
   return  islogedin==="true"?<>
       <nav>

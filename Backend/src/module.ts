@@ -6,6 +6,7 @@ import { Customer } from './model/customer';
 import {Transactionn } from './model/transaction';
 import { JwtModule } from '@nestjs/jwt';
 
+
 @Module({
   imports: [TypeOrmModule.forRoot({
       type: 'mysql',
@@ -17,9 +18,12 @@ import { JwtModule } from '@nestjs/jwt';
       entities: [Customer, Transactionn],
       synchronize: true,
     }),
-    TypeOrmModule.forFeature([Customer, Transactionn]),],
+    TypeOrmModule.forFeature([Customer, Transactionn]), JwtModule.register({
+      secret: 'negasi_g', // move to .env for production
+      signOptions: { expiresIn: '1h' },
+    })],
   controllers: [AppController],
-  providers: [AppService,JwtModule],
-
+  providers: [AppService],
+ exports :[AppService, JwtModule]
 })
 export class AppModule {}

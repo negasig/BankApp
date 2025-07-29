@@ -2,12 +2,14 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import Layout from './layout';
-export default function Clogin() {
+import { jwtDecode } from 'jwt-decode';
+export default function Logintwo() {
     const[username, setUsername]=useState("")
     const[password, setPassword]=useState("")
     const[islogedin, setislogedin]=useState(false)
      const[errmsg, seterrmsg]=useState("")
-        const urll="http://localhost:3002/customers/loginc";
+     const [role, setRole]=useState("")
+        const urll="http://localhost:3002/customers/logincs";
         const nav=useNavigate();
     const handlesubmit=(e)=>{
 
@@ -19,12 +21,29 @@ export default function Clogin() {
               password:password
                }
              }).then(res=>{
-               localStorage.setItem("login", res.data);
+               localStorage.setItem("logintwo", res.data);
              })
     }
+    useEffect(()=>{
+  const log=localStorage.getItem("logintwo")
+  if(log && log.length>0){
+    const decoded=jwtDecode(JSON.stringify(log));
+    setRole(decoded.role);
+  }
+ if (role==="admin"){
+    nav("/admin")
+  }
+  else if(role==="user"){
+    nav("/user")
+  }
+  else{
+seterrmsg("Invalid Credientials")
+  }
+    },[role])
+    
   return islogedin==="true"?<Layout />:<>
   <div className=' text-sm font-bold flex items-center justify-center'>Login</div><br/>
-        <h1>DD</h1>
+        
       <h1 className='font-bold mb-0.5 text-red-500 flex items-center justify-center'>{errmsg}</h1><br></br>
    <div className='flex items-center justify-center flex-wrap mt-1'>
 

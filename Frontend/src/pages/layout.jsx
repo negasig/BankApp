@@ -9,6 +9,7 @@ const Layout = () => {
       const handlelogout=()=>{
   localStorage.removeItem("login")
  setislogedin(false);
+ nav("/")
     }
     useEffect(()=>{
    if(islogedin==="false"){
