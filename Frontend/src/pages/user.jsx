@@ -6,10 +6,10 @@ import { jwtDecode } from 'jwt-decode';
     import { Link, Outlet, useNavigate } from 'react-router-dom';
 import Logintwo from './logintwo';
 export default function User() {
-      const log=localStorage.getItem("logintwo")
+      const log=localStorage.getItem("logintwo");
       const userloged=jwtDecode(log);
       const[user, setUser]=useState([]);
-       const[accountnumber, setAccountnumber]=useState(0);
+       const[accountnumber, setAccountnumber]=useState(userloged.accountnumber);
 
      
         const urll="http://localhost:3002/customers/transaction";
@@ -29,11 +29,11 @@ export default function User() {
             }).then(res=>{
               setUser(res.data);
             })
+            hndletransact();
         }
-        useEffect(()=>{
-          finduser();
-          setAccountnumber(userloged.accountnumber)
-        },[])
+
+    
+        
    const  hndletransact=()=>{
 return <>
 <table className="border-solid bg-white w-full p-2">
@@ -58,7 +58,7 @@ return <>
     </table>
 </>
    }
-    return userloged.role==="user"?<>
+    return <>
     <div>
     <h1>Welcome <span> {userloged.username}</span></h1> 
         <nav>
@@ -73,11 +73,11 @@ return <>
   
     
     </div>
- <form onSubmit={hndletransact}>
-    <button className='text-sky-500'>Seach</button>
+ <form>
+    <button className='text-sky-500' onClick={finduser}>Seach</button>
     </form> 
 
-      </>:<Logintwo />
+      </>
     
     }
     
