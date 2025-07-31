@@ -161,4 +161,7 @@ async logincustomer(username:string, password:string):Promise<any>{
     }
     return this.jwtservice.sign({role:user.role, username:user.username, accountnumber:user.AccountNumber});
   }
+   findUserByAccountNum(accountnumber: number): Promise<Customer|null>{
+   return this.userRepository.findOneBy({AccountNumber:accountnumber})
+  }
 }

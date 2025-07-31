@@ -52,4 +52,8 @@ return this.appService.findtransactionofuser(customerdto.AccountNumber);
   async logincust(@Body() customerd:CreateUserDto){
 return this.appService.logincustomer(customerd.username, customerd.password);
   }
+   @Post('findbyAcc/')
+  findByAccnum(@Body() Cdto:CreateUserDto):Promise<Customer|undefined|null>{
+    return this.appService.findUserByAccountNum(Cdto.AccountNumber);
+  }
 }
