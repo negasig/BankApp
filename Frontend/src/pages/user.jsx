@@ -83,9 +83,6 @@ export default function User() {
               <li className='p-1'>
                 <Link to="/home">Home</Link>
               </li>
-              <li className='p-1'>
-                <Link to="/customers">Customers</Link>
-              </li>
              <li className='p-1'>
                 <Link to="/about">About</Link>
               </li>

@@ -31,7 +31,7 @@ findusers();
         <nav>
         <ul className=' flex flex-row flex-3/4 text-sm/6 bg-white text-black font-sans font-semibold shadow-lg' >
           <li className='p-1'>
-            <Link to="/home">Home</Link>
+            <Link to="/admin">Home</Link>
           </li>
           <li className='p-1'>
             <Link to="/customers">Customers</Link>

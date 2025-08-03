@@ -17,7 +17,7 @@ export default function Admin() {
         const handlelogout=()=>{
       localStorage.removeItem("logintwo")
      nav("/logtwo")
-     setislogedin(false);
+     
         }
     const finduser=(event)=>{
        event.preventDefault();
@@ -35,11 +35,11 @@ export default function Admin() {
         )
     }
 
-return islogedin?<>
+return islogedin===true?<>
 <nav>
         <ul className=' flex flex-row flex-3/4 bg-white text-sm/6 text-sky-400 font-sans font-semibold shadow-lg' >
           <li className='p-1'>
-            <Link to="/home">Home</Link>
+            <Link to="/admin">Home</Link>
           </li>
           <li className='p-1'>
             <Link to="/customers">Customers</Link>
@@ -50,9 +50,6 @@ return islogedin?<>
          <li className='p-1'>
             <Link to="/acc">MyAccount</Link>
           </li>
-         <li className='p-1'>
-            <Link to="/profile">profile</Link>
-          </li>
             <li className='p-1'>
              <button onClick={handlelogout}>logout</button>
       <Outlet />
@@ -60,7 +57,6 @@ return islogedin?<>
         </ul>
       </nav>
      <h1>Welcome <span style={{color:"red", fontSize:"16px"}}> {userloged.username}</span></h1>
-<h1>Customer details</h1>
 <h1 style={{color:"red"}}>{error}</h1>
   <div>
     
