@@ -5,7 +5,7 @@ import '../output.css'
 
 const Layout = () => {
       const nav=useNavigate();
-      const[islogedin, setislogedin]=useState(localStorage.getItem("login"))
+      const[islogedin, setislogedin]=useState(localStorage.getItem("logintwo"))
       const handlelogout=()=>{
   localStorage.removeItem("login")
  setislogedin(false);

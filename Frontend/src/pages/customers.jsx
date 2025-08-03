@@ -5,7 +5,7 @@ import Login from './login';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
 export default function Students() {
     const[users, setUsers]=useState([]);
-   const[islogedin, setislogedin]=useState(localStorage.getItem("login"))
+   const[islogedin, setislogedin]=useState(localStorage.getItem("logintwo"))
    const nav=useNavigate();
    const handlelogout=()=>{
   localStorage.removeItem("login")
@@ -25,7 +25,7 @@ export default function Students() {
 
     },[users])
 
-  return islogedin==="true"?<>
+  return islogedin?<>
         <nav>
         <ul className=' flex flex-row flex-3/4 text-sm/6 pb-1 bg-white text-black font-sans font-semibold shadow-md' >
           <li className='p-1'>

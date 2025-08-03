@@ -6,7 +6,7 @@ import Login from './login';
 export default function Myaccount() {
     const[user, setUser]=useState([]);
    const[accountnumber, setAccountnumber]=useState(0);
-   const[islogedin, setislogedin]=useState(localStorage.getItem("login"))
+   const[islogedin, setislogedin]=useState(localStorage.getItem("logintwo"))
     const urll="http://localhost:3002/customers/transaction";
     const findusers=()=>{
         axios({
@@ -27,7 +27,7 @@ findusers();
   localStorage.removeItem("login")
  setislogedin(false);
     }
-  return islogedin==="true"?<>
+  return islogedin?<>
         <nav>
         <ul className=' flex flex-row flex-3/4 text-sm/6 bg-white text-black font-sans font-semibold shadow-lg' >
           <li className='p-1'>

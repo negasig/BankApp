@@ -3,14 +3,14 @@ import "../output.css"
 import Login from './login'
 import { Link, Outlet, useNavigate } from 'react-router-dom'
 export default function About() {
-  const[islogedin, setislogedin]=useState(localStorage.getItem("login"))
+  const[islogedin, setislogedin]=useState(localStorage.getItem("logintwo"))
   const nav=useNavigate();
         const handlelogout=()=>{
   localStorage.removeItem("login")
  setislogedin(false);
   nav("/")
     }
-  return  islogedin==="true"?<>
+  return  islogedin?<>
       <nav>
         <ul className=' flex flex-row flex-3/4 text-sm/6 bg-white text-black font-sans font-semibold shadow-lg' >
           <li className='p-1'>

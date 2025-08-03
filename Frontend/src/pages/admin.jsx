@@ -6,7 +6,6 @@ export default function Admin() {
 const user=jwtDecode(log);
 
   return <>
-  <div>Admin</div>
   <h1>Welcome </h1> <p style={{color:'red'}}>{user.username}</p>
   </>
 }
