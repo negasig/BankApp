@@ -4,6 +4,7 @@ import { Customer } from './model/customer';
 import { CreateUserDto } from './dto/CustomerDto';
 import { AppModule } from './module';
 import { Transactionn } from './model/transaction';
+import { TransferDto } from './dto/transferDto';
 
 @Controller("customers/")
 export class AppController {
@@ -44,9 +45,9 @@ export class AppController {
 return this.appService.findtransactionofuser(customerdto.AccountNumber);
   }
   @Post("transfer")
-  transfer(@Body() body:any):Promise<any>{
-   const {AccountNumber1, AccountNumber2, amount}=body;
-    return this.appService.transfer(AccountNumber1, AccountNumber2, amount)
+  transfer(@Body() cdto: TransferDto):Promise<any>{
+  const{fromACC,toACC,amount}=cdto;
+    return this.appService.transfer(fromACC, toACC, amount)
   }
   @Post("logincs")
   async logincust(@Body() customerd:CreateUserDto){

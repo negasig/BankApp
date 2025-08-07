@@ -9,7 +9,7 @@ export default function User() {
       const log=localStorage.getItem("logintwo");
       const userloged=jwtDecode(log);
       const[user, setUser]=useState([]);
-      const[transact,setTransact]=useState(false);
+      const[transact,setTransact]=useState();
       const[usern, setUsern]=useState({});
       const[logedin, setislogedin]=useState(true)
 
@@ -47,34 +47,11 @@ export default function User() {
             })
         }
         useEffect(()=>{
-          finduser();
+         
           finduserbyacc();
-        },[]);
+        },);
         
         console.log(usern);
-  if(transact){
-    return <><table className="border-solid bg-white w-full p-2">
-     <thead>
-       <th className=' text-sky-500 text-left'>Date</th>
-       <th className=' text-sky-500 text-left'>FirstName</th>
-       <th className=' text-sky-500 text-left'>LastName</th>
-       <th className=' text-sky-500 text-left'>Dailywithdrawl</th>
-       <th className=' text-sky-500 text-left'>withdrawal</th>
-       <th className=' text-sky-500 text-left'>deposit</th>
-       <th className=' text-sky-500 text-left'>Description</th>
-       <th className=' text-sky-500 text-left'>Balance</th>
-
-     </thead>
-     <tbody>
-       {user.map(u => {
-         return <tr key={u.id} className='border-1'><td>{u.date}</td><td>{u.FirstName}</td><td>{u.LastName}</td><td>{u.dailywithdrawl}</td><td>{u.withdrawal}</td><td>{u.deposit}</td><td>{u.description}</td><td>{u.Balance}</td></tr>;
-
-       }
-       )}
-     </tbody>
-   </table>
-   </>
-  }
 
 
   return logedin? <div>
@@ -111,6 +88,26 @@ export default function User() {
 
      <form>
        <button className='text-sky-500' onClick={()=>setTransact(true)}>Transactions</button>     </form>
+       {transact && (<table className="border-solid bg-white w-full p-2">
+     <thead>
+       <th className=' text-sky-500 text-left'>Date</th>
+       <th className=' text-sky-500 text-left'>FirstName</th>
+       <th className=' text-sky-500 text-left'>LastName</th>
+       <th className=' text-sky-500 text-left'>Dailywithdrawl</th>
+       <th className=' text-sky-500 text-left'>withdrawal</th>
+       <th className=' text-sky-500 text-left'>deposit</th>
+       <th className=' text-sky-500 text-left'>Description</th>
+       <th className=' text-sky-500 text-left'>Balance</th>
+
+     </thead>
+     <tbody>
+       {user.map(u => {
+         return <tr key={u.id} className='border-1'><td>{u.date}</td><td>{u.FirstName}</td><td>{u.LastName}</td><td>{u.dailywithdrawl}</td><td>{u.withdrawal}</td><td>{u.deposit}</td><td>{u.description}</td><td>{u.Balance}</td></tr>;
+
+       }
+       )}
+     </tbody>
+   </table>)}
    </div>:<Logintwo />
 
  }

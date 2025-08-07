@@ -3,7 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Customer } from './model/customer';
 import { Repository } from 'typeorm';
 import { CreateUserDto } from './dto/CustomerDto';
-import { error } from 'console';
+import { error, log } from 'console';
 import { promises } from 'dns';
 import { Transactionn } from './model/transaction';
 import { JwtModule, JwtService } from '@nestjs/jwt';
@@ -126,10 +126,10 @@ if(user){
 }
   return "Account not found";
 }
-async transfer(AccountNumber1:number,  AccountNumber2:number, Amount:number):Promise<any>{
-  const customer1=await this.userRepository.findOne({where:{AccountNumber: AccountNumber1}})
-  const customer2=await this.userRepository.findOne({where:{AccountNumber: AccountNumber2}})
-
+async transfer(AccountNumberA:number,  AccountNumberB:number, Amount:any):Promise<any>{
+  const customer1=await this.userRepository.findOne({where:{AccountNumber: AccountNumberA}})
+  const customer2=await this.userRepository.findOne({where:{AccountNumber: AccountNumberB}})
+const customer=new Customer();
   if(Amount<=0){
     return "plase insert amount greater than 0"
   }
@@ -139,13 +139,12 @@ async transfer(AccountNumber1:number,  AccountNumber2:number, Amount:number):Pro
   else {
  
     customer1.Balance-=Amount;
-       
     customer2.Balance+=Amount;
-     await this.userRepository.save(customer1);
+    await this.userRepository.save(customer1);
     await this.userRepository.save(customer2);
-
     
-return `you have transferd ${Amount} Birr to ${AccountNumber2} `;
+    
+return `You have transferd ${Amount} Birr from ${AccountNumberA} to ${AccountNumberB} your balance is ${customer1.Balance}`;
   
   }
 }
