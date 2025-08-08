@@ -9,7 +9,7 @@ export default function User() {
       const log=localStorage.getItem("logintwo");
       const userloged=jwtDecode(log);
       const[user, setUser]=useState([]);
-      const[transact,setTransact]=useState(false);
+      const[transact,setTransact]=useState(["true", "false"]);
       const[usern, setUsern]=useState({});
       const[logedin, setislogedin]=useState(true)
 
@@ -20,7 +20,7 @@ export default function User() {
         const handlelogout=()=>{
       localStorage.removeItem("logintwo")
      nav("/logtwo")
-     setislogedin(false);
+
         }
         const finduser=()=>{
     
@@ -34,7 +34,7 @@ export default function User() {
               setUser(res.data);
             })
         }
-                const finduserbyacc=()=>{
+        const finduserbyacc=()=>{
     
             axios({
               method:'Post',
@@ -49,36 +49,16 @@ export default function User() {
         useEffect(()=>{
           finduser();
           finduserbyacc();
+      
         },[]);
         
         console.log(usern);
-  if(transact){
-    return <><table className="border-solid bg-white w-full p-2">
-     <thead>
-       <th className=' text-sky-500 text-left'>Date</th>
-       <th className=' text-sky-500 text-left'>FirstName</th>
-       <th className=' text-sky-500 text-left'>LastName</th>
-       <th className=' text-sky-500 text-left'>Dailywithdrawl</th>
-       <th className=' text-sky-500 text-left'>withdrawal</th>
-       <th className=' text-sky-500 text-left'>deposit</th>
-       <th className=' text-sky-500 text-left'>Description</th>
-       <th className=' text-sky-500 text-left'>Balance</th>
-
-     </thead>
-     <tbody>
-       {user.map(u => {
-         return <tr key={u.id} className='border-1'><td>{u.date}</td><td>{u.FirstName}</td><td>{u.LastName}</td><td>{u.dailywithdrawl}</td><td>{u.withdrawal}</td><td>{u.deposit}</td><td>{u.description}</td><td>{u.Balance}</td></tr>;
-
-       }
-       )}
-     </tbody>
-   </table>
-   </>
+        
+  if (!logedin) {
+    return <Logintwo />;
   }
-
-
-  return logedin? <div>
-    <nav>
+      return <div> 
+        <nav>
             <ul className=' flex flex-row flex-3/4 bg-white text-sm/6 text-sky-400 font-sans font-semibold shadow-lg' >
               <li className='p-1'>
                 <Link to="/home">Home</Link>
@@ -98,8 +78,8 @@ export default function User() {
               </li>
             </ul>
           </nav>
-     <h1>Welcome <span style={{color:"red", fontSize:"16px"}}> {userloged.username}</span></h1>
-<p> Your Balance is: {usern.Balance}</p>
+        <h1>Welcome <span style={{color:"red", fontSize:"16px"}}> {userloged.username}</span></h1>
+        <p> Your Balance is: {usern.Balance}</p>
      <nav>
        <ul className=' flex flex-row flex-3/4 bg-white text-sm/6 text-sky-400 font-sans font-semibold shadow-lg'>
          <li className='p-1'>
@@ -109,10 +89,36 @@ export default function User() {
        </ul>
      </nav>
 
-     <form>
-       <button className='text-sky-500' onClick={()=>setTransact(true)}>Transactions</button>     </form>
-   </div>:<Logintwo />
-
- }
+       <form>
+       <button className='text-sky-500' onClick={()=>setTransact()}>Transactions</button> 
+       </form>
    
+      
+      {transact && (<table className="border-solid bg-white w-full p-2">
+     <thead>
+       <th className=' text-sky-500 text-left'>Date</th>
+       <th className=' text-sky-500 text-left'>FirstName</th>
+       <th className=' text-sky-500 text-left'>LastName</th>
+       <th className=' text-sky-500 text-left'>Dailywithdrawl</th>
+       <th className=' text-sky-500 text-left'>withdrawal</th>
+       <th className=' text-sky-500 text-left'>deposit</th>
+       <th className=' text-sky-500 text-left'>Description</th>
+       <th className=' text-sky-500 text-left'>Balance</th>
+     </thead>
+     <tbody>
+       {user.map(u => {
+         return <tr key={u.id} className='border-1'><td>{u.date}</td><td>{u.FirstName}</td><td>{u.LastName}</td><td>{u.dailywithdrawl}</td><td>{u.withdrawal}</td>
+         <td>{u.deposit}</td><td>{u.description}</td><td>{u.Balance}</td></tr>;
+
+       }
+       )}
+     </tbody>
+   </table>
+      )}
+      </div> 
+    } 
+
+
+
+
     
