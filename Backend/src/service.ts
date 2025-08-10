@@ -129,7 +129,6 @@ if(user){
 async transfer(AccountNumberA:number,  AccountNumberB:number, Amount:any):Promise<any>{
   const customer1=await this.userRepository.findOne({where:{AccountNumber: AccountNumberA}})
   const customer2=await this.userRepository.findOne({where:{AccountNumber: AccountNumberB}})
-const customer=new Customer();
   if(Amount<=0){
     return "plase insert amount greater than 0"
   }
