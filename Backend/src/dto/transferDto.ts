@@ -6,4 +6,5 @@ export class TransferDto{
 fromACC:number
 toACC:number
 amount:number
+descri:string
 }

@@ -20,4 +20,6 @@ withdrawal:number
 description:string
 @Column()
 date:Date
+@Column()
+transferamount:number
 }

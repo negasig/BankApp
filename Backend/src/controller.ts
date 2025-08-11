@@ -46,8 +46,8 @@ return this.appService.findtransactionofuser(customerdto.AccountNumber);
   }
   @Post("transfer")
   transfer(@Body() cdto: TransferDto):Promise<any>{
-  const{fromACC,toACC,amount}=cdto;
-    return this.appService.transfer(fromACC, toACC, amount)
+  const{fromACC,toACC,amount, descri}=cdto;
+    return this.appService.transfer(fromACC, toACC, amount, descri)
   }
   @Post("logincs")
   async logincust(@Body() customerd:CreateUserDto){
