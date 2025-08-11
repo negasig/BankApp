@@ -26,7 +26,7 @@ export default function Logintwo() {
              
                localStorage.setItem("logintwo", res.data);
              }       else{
-             seterrmsg(res.data);
+             seterrmsg("incorrect credientials");
 
              }
             })
@@ -44,10 +44,6 @@ export default function Logintwo() {
   }
   else if(role==="user"){
     nav("/user")
-  }
-  else if(role==="") {
-seterrmsg("Invalidd Credientials")
-nav("/logtwo")
   }
     }
     useEffect(()=>{

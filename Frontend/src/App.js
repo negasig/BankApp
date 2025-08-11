@@ -14,6 +14,7 @@ import Clogin from './pages/customer';
 import Logintwo from './pages/logintwo';
 import User from './pages/user';
 import Admin from './pages/admin';
+import Counter from './pages/counter';
 
 function App() {
   return <>
@@ -31,6 +32,7 @@ function App() {
     <Route path='/logtwo' element={<Logintwo />} />
     <Route path='/admin' element={<Admin />} />
     <Route path='/user' element={<User />} />
+    <Route path='/counter' element={<Counter />} />
  </Routes>
  </BrowserRouter>
  

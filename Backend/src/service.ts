@@ -133,7 +133,14 @@ async transfer(AccountNumberA:number,  AccountNumberB:number, Amount:number, Des
   if(Amount<=0){
     return "plase insert amount greater than 0"
   }
-  if(!customer1 || !customer2){
+ 
+  else if(customer1 &&   customer1?.Balance<Amount){
+    return "insufficeint balance"
+  }
+  else if(AccountNumberA===customer2?.AccountNumber){
+    return "for self is not allowed"
+  }
+  else if(!customer1 || !customer2){
     return "Chceck your accounts"
   }
   else {
