@@ -54,7 +54,7 @@ return this.appService.findtransactionofuser(customerdto.AccountNumber);
 return this.appService.logincustomer(customerd.username, customerd.password);
   }
    @Post('findbyAcc/')
-  findByAccnum(@Body() Cdto:CreateUserDto):Promise<Customer|undefined|null>{
+  findByAccnum(@Body() Cdto:CreateUserDto):Promise<any>{
     return this.appService.findUserByAccountNum(Cdto.AccountNumber);
   }
 }

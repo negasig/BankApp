@@ -37,7 +37,7 @@ export default function User() {
               setUser(res.data);
             })
         }
-                const finduserbyacc=()=>{
+        const finduserbyacc=()=>{
     
             axios({
               method:'Post',
@@ -141,4 +141,7 @@ setPayment(true)
 
  }
    
+
+
+
     
