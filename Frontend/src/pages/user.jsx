@@ -52,7 +52,8 @@ export default function User() {
         const data={
             "fromACC":userloged.accountnumber,
             "toACC":receiverAccount,
-            "amount":Number(amount)
+            "amount":Number(amount),
+            "descri":description
         }
         const handletransfer=()=>{
           axios.post(urlt,

@@ -141,7 +141,7 @@ async transfer(AccountNumberA:number,  AccountNumberB:number, Amount:number, Des
     return "for self is not allowed"
   }
   else if(!customer1 || !customer2){
-    return "Chceck your accounts"
+    return "Accounts does not exist"
   }
   else {
  
