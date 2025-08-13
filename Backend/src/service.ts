@@ -126,14 +126,22 @@ if(user){
 }
   return "Account not found";
 }
-async transfer(AccountNumberA:number,  AccountNumberB:number, Amount:any):Promise<any>{
+async transfer(AccountNumberA:number,  AccountNumberB:number, Amount:number, Description:string):Promise<any>{
   const customer1=await this.userRepository.findOne({where:{AccountNumber: AccountNumberA}})
   const customer2=await this.userRepository.findOne({where:{AccountNumber: AccountNumberB}})
-
+ const transaction=new Transactionn();
+  const transaction2=new Transactionn();
   if(Amount<=0){
     return "plase insert amount greater than 0"
   }
-  if(!customer1 || !customer2){
+ 
+  else if(customer1 &&   customer1?.Balance<Amount){
+    return "insufficeint balance"
+  }
+  else if(AccountNumberA===customer2?.AccountNumber){
+    return "for self is not allowed"
+  }
+  else if(!customer1 || !customer2){
     return "Chceck your accounts"
   }
   else {
@@ -143,8 +151,23 @@ async transfer(AccountNumberA:number,  AccountNumberB:number, Amount:any):Promis
     await this.userRepository.save(customer1);
     await this.userRepository.save(customer2);
     
-    
-return `You have transferd ${Amount} Birr from ${AccountNumberA} to ${AccountNumberB} your balance is ${customer1.Balance}`;
+    transaction.date=new Date();
+    transaction.AccountNumber=AccountNumberA
+    transaction.FirstName=customer1.FirstName
+    transaction.Balance=customer1.Balance
+    transaction.LastName=customer1.LastName
+    transaction.description=Description;
+    transaction.transferamount=Amount;
+    this.transactionRepo.save(transaction)
+        transaction2.date=new Date();
+    transaction2.AccountNumber=AccountNumberB
+    transaction2.FirstName=customer2.FirstName
+    transaction2.Balance=customer2.Balance
+    transaction2.LastName=customer2.LastName
+    transaction2.description=Description;
+    transaction2.transferamount=Amount;
+    this.transactionRepo.save(transaction2)
+return `You have received ${Amount} Birr from ${AccountNumberA} Your balance is ${customer2.Balance}`;
   
   }
 }
