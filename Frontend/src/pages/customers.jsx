@@ -8,7 +8,7 @@ export default function Students() {
    const[islogedin, setislogedin]=useState(localStorage.getItem("logintwo"))
    const nav=useNavigate();
    const handlelogout=()=>{
-  localStorage.removeItem("login")
+  localStorage.removeItem("logintwo")
  setislogedin(false);
   nav("/")
     }
@@ -28,21 +28,19 @@ export default function Students() {
   return islogedin?<>
         <nav>
         <ul className=' flex flex-row flex-3/4 text-sm/6 pb-1 bg-white text-black font-sans font-semibold shadow-md' >
-          <li className='p-1'>
-            <Link to="/admin">Home</Link>
-          </li>
-          <li className='p-1'>
-            <Link to="/customers">Customers</Link>
-          </li>
-         <li className='p-1'>
-            <Link to="/about">About</Link>
-          </li>
-         <li className='p-1'>
-            <Link to="/acc">MyAccount</Link>
-          </li>
-         <li className='p-1'>
-            <Link to="/profile">profile</Link>
-          </li>
+              <li className='p-1'>
+                <Link to="/home">Home</Link>
+              </li>
+              <li className='p-1'>
+                <Link to="/sendmoney">SendMoney</Link>
+              </li>
+              <li className='p-1'>
+                <Link to="/transact">Transactions</Link>
+              </li>
+             <li className='p-1'>
+                <Link to="/acc">MyAccount</Link>
+              </li>
+
             <li className='p-1'>
              <button onClick={handlelogout} className='cursor-pointer'>logout</button>
       <Outlet />

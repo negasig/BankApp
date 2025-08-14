@@ -5,7 +5,7 @@ import { jwtDecode } from 'jwt-decode';
 
     import { Link, Outlet, useNavigate } from 'react-router-dom';
 import Logintwo from './logintwo';
-export default function User() {
+export default function SendMoney() {
       const log=localStorage.getItem("logintwo");
       const userloged=jwtDecode(log);
       const[user, setUser]=useState([]);
@@ -97,9 +97,20 @@ export default function User() {
             </ul>
           </nav>
      <h1>Welcome <span style={{color:"red", fontSize:"16px"}}> {userloged.username}</span></h1>
-<p> Your Balance is: {usern.Balance}</p>
 
-     
+
+
+   <div>
+    <h2>Sendmoney</h2>
+    <p>{response}</p>
+    <form>
+      <input type='number' placeholder='enter receiver ACC' className='p-1 border-1 md:w-100 lg:w-45 m-1 sm:w-120 w-75 rounded-lg' required onChange={(e)=>(setReceiverAccount(e.target.value))} /><br/>
+      <input type='number' placeholder='enter Amount' className='p-1 border-1 md:w-100 lg:w-45 sm:w-120 w-75 rounded-lg' required onChange={(e)=>(setAmount(e.target.value))} /><br/>
+      <input type='text' placeholder='enter description' className='p-1 border-1 md:w-100 lg:w-45 m-1 sm:w-120 w-75 rounded-lg' required onChange={(e)=>(setDescription(e.target.value))} />
+      <button  onClick={handletransfer} className='text-white hover:border-transparent cursor-pointer active:bg-sky-700 border-2 bg-sky-500 border-purple-200 hover:bg-purple-600 hover:text-white shadow-xl/20 p-1 pl-5 pr-5 mt-2 font-bold rounded-full'>Pay</button>
+
+    </form>
+   </div>
    </div>:<Logintwo />
 
  }

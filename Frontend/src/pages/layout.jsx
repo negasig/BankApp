@@ -7,7 +7,7 @@ const Layout = () => {
       const nav=useNavigate();
       const[islogedin, setislogedin]=useState(localStorage.getItem("logintwo"))
       const handlelogout=()=>{
-  localStorage.removeItem("login")
+  localStorage.removeItem("logintwo")
  setislogedin(false);
  nav("/")
     }
@@ -20,22 +20,20 @@ const Layout = () => {
   return islogedin?
     <>
       <nav>
-        <ul className=' flex flex-row flex-3/4 bg-white text-sm/6 text-black font-sans pb-1 font-semibold shadow-lg' >
-          <li className='p-1'>
-            <Link to="/home">Home</Link>
-          </li>
-          <li className='p-1'>
-            <Link to="/customers">Customers</Link>
-          </li>
-         <li className='p-1'>
-            <Link to="/about">About</Link>
-          </li>
-         <li className='p-1'>
-            <Link to="/acc">MayAccount</Link>
-          </li>
-         <li className='p-1'>
-            <Link to="/profile">profile</Link>
-          </li>
+        <ul className=' flex flex-row flex-3/4 bg-white text-sm/6 text-sky-400 font-sans font-semibold shadow-lg' >
+              <li className='p-1'>
+                <Link to="/home">Home</Link>
+              </li>
+              <li className='p-1'>
+                <Link to="/sendmoney">SendMoney</Link>
+              </li>
+              <li className='p-1'>
+                <Link to="/transact">Transactions</Link>
+              </li>
+             <li className='p-1'>
+                <Link to="/acc">MyAccount</Link>
+              </li>
+
             <li className='p-1'>
              <button onClick={handlelogout}>logout</button>
       <Outlet />

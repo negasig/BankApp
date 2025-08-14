@@ -20,14 +20,9 @@ export default function About() {
             <Link to="/customers">Customers</Link>
           </li>
          <li className='p-1'>
-            <Link to="/about">About</Link>
-          </li>
-         <li className='p-1'>
             <Link to="/acc">MyAccount</Link>
           </li>
-         <li className='p-1'>
-            <Link to="/profile">profile</Link>
-          </li>
+
             <li className='p-1'>
              <button onClick={handlelogout}>logout</button>
       <Outlet />
