@@ -15,6 +15,8 @@ import Logintwo from './pages/logintwo';
 import User from './pages/user';
 import Admin from './pages/admin';
 import Counter from './pages/counter';
+import Transaction from './pages/transaction';
+import SendMoney from './pages/sendmoney';
 
 function App() {
   return <>
@@ -33,6 +35,8 @@ function App() {
     <Route path='/admin' element={<Admin />} />
     <Route path='/user' element={<User />} />
     <Route path='/counter' element={<Counter />} />
+    <Route path='/transact' element={<Transaction />} />
+    <Route path='/sendmoney' element={<SendMoney />} />
  </Routes>
  </BrowserRouter>
  

@@ -10,9 +10,12 @@ export default function Admin() {
    const[accountnumber, setAccountnumber]=useState(0);
    const[error, setError]=useState("")
     const[islogedin, setislogedin]=useState(true)
+
+
     const urll="http://localhost:3002/customers/transaction";
     const nav=useNavigate();
     const log=localStorage.getItem("logintwo");
+        const decoded=jwtDecode(JSON.stringify(log));
     const userloged=jwtDecode(log);
         const handlelogout=()=>{
       localStorage.removeItem("logintwo")
@@ -56,9 +59,9 @@ if(user.length>0){
     </tbody>
 </table>
 }
-return islogedin===true?<>
+return islogedin===true && decoded.role==="admin"?<>
 <nav>
-        <ul className=' flex flex-row flex-3/4 bg-white text-sm/6 text-sky-400 font-sans font-semibold shadow-lg' >
+        <ul className=' flex flex-row flex-3/4 text-sm/6 pb-1 bg-white text-black font-sans font-semibold shadow-md' >
           <li className='p-1'>
             <Link to="/admin">Home</Link>
           </li>
