@@ -12,9 +12,9 @@ LastName: string;
 AccountNumber:number;
 @Column()
 Balance:number;
-@Column({nullable:true})
+@Column()
 deposit:number;
-@Column({nullable:true})
+@Column()
 withdrawal:number
 @Column()
 description:string
@@ -22,4 +22,6 @@ description:string
 date:Date
 @Column()
 transferamount:number
+@Column()
+currency:string
 }

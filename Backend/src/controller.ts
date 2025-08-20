@@ -29,11 +29,11 @@ export class AppController {
   }
   @Post("deposit")
   depost(@Body() user:CreateUserDto): Promise<Customer|null|string>{
-      return this.appService.deposit(user.AccountNumber, user.Balance, user.description);
+      return this.appService.deposit(user.AccountNumber, user.Balance, user.description, user.currency);
   }
   @Post("withdraw")
   withdraw(@Body() user:CreateUserDto): Promise<Customer|null|string|undefined>{
-      return this.appService.withdraw(user.AccountNumber, user.Balance, user.description);
+      return this.appService.withdraw(user.AccountNumber, user.Balance, user.description, user.currency);
     
   }
   @Post('signin')

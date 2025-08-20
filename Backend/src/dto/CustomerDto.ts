@@ -8,5 +8,6 @@ export class CreateUserDto {
   username:string;
   password:string;
   description:string;
+  currency:string;
 }
   

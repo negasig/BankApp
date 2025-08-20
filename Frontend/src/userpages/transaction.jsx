@@ -103,17 +103,17 @@ export default function Transaction() {
        <th className=' text-sky-500 text-left'>Date</th>
        <th className=' text-sky-500 text-left'>FirstName</th>
        <th className=' text-sky-500 text-left'>LastName</th>
-       <th className=' text-sky-500 text-left'>Dailywithdrawl</th>
-       <th className=' text-sky-500 text-left'>withdrawal</th>
-       <th className=' text-sky-500 text-left'>deposit</th>
+      
+       <th className=' text-sky-500 text-left'>Withdrawal</th>
+       <th className=' text-sky-500 text-left'>Deposit</th>
        <th className=' text-sky-500 text-left'>Description</th>
-        <th className=' text-sky-500 text-left'>Amount</th>
+        <th className=' text-sky-500 text-left'>Tranfer Amount</th>
        <th className=' text-sky-500 text-left'>Balance</th>
 
      </thead>
      <tbody>
        {user.map(u => {
-         return <tr key={u.id} className='border-1'><td>{u.date}</td><td>{u.FirstName}</td><td>{u.LastName}</td><td>{u.dailywithdrawl}</td><td>${u.withdrawal}</td><td>${u.deposit}</td><td>{u.description}</td><td>${u.transferamount}</td><td>${u.Balance}</td></tr>;
+         return <tr key={u.id} className='border-1'><td>{u.date}</td><td>{u.FirstName}</td><td>{u.LastName}</td><td>{u.withdrawal>0? `- $${u.withdrawal}`: " "}</td><td>{u.deposit>0?`+ $${u.deposit}`: ""}</td><td>{u.description}</td><td>{u.transferamount>0?`$${u.transferamount}`:""}</td><td>${u.Balance}</td></tr>;
 
        }
        )}
