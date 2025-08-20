@@ -1,15 +1,15 @@
 import React, { useState } from 'react'
 import "../output.css"
-import Login from './login'
+import Login from '../pages/logintest'
 import { Link, Outlet, useNavigate } from 'react-router-dom'
+import Logintwo from '../pages/login'
 export default function About() {
   const[islogedin, setislogedin]=useState(localStorage.getItem("logintwo"))
   const nav=useNavigate();
         const handlelogout=()=>{
-  localStorage.removeItem("login")
- setislogedin(false);
-  nav("/")
-    }
+      localStorage.removeItem("logintwo")
+         nav("/login")
+        }
   return  islogedin?<>
       <nav>
         <ul className=' flex flex-row flex-3/4 text-sm/6 bg-white text-black font-sans font-semibold shadow-lg' >

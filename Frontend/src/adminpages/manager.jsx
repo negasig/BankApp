@@ -1,8 +1,9 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import '../output.css'
-import Login from './login';
+import Login from '../pages/logintest';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
+import Logintwo from '../pages/login';
 export default function Admin() {
     const[user, setUser]=useState([]);
    const[accountnumber, setAccountnumber]=useState(0);
@@ -13,7 +14,7 @@ export default function Admin() {
     const handlelogout=()=>{
   localStorage.removeItem("login")
  setislogedin(false);
- nav("/")
+ nav("/login")
     }
     const finduser=(event)=>{
        event.preventDefault();

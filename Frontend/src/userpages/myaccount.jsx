@@ -2,12 +2,16 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import '../output.css'
 import { Link, Outlet } from 'react-router-dom';
-import Login from './login';
+import Login from '../pages/logintest';
 export default function Myaccount() {
     const[user, setUser]=useState([]);
    const[accountnumber, setAccountnumber]=useState(0);
    const[islogedin, setislogedin]=useState(localStorage.getItem("logintwo"))
     const urll="http://localhost:3002/customers/transaction";
+            const handlelogout=()=>{
+      localStorage.removeItem("logintwo")
+         nav("/login")
+        }
     const findusers=()=>{
         axios({
           method:'Post',
@@ -23,28 +27,27 @@ export default function Myaccount() {
 findusers();
 
     },[accountnumber])
-          const handlelogout=()=>{
-  localStorage.removeItem("login")
- setislogedin(false);
-    }
   return islogedin?<>
-        <nav>
-   <ul className=' flex flex-row flex-3/4 bg-white text-sm/6 text-sky-400 font-sans font-semibold shadow-lg' >
-          <li className='p-1'>
-            <Link to="/admin">Home</Link>
-          </li>
-          <li className='p-1'>
-            <Link to="/customers">Customers</Link>
-          </li>
-         <li className='p-1'>
-            <Link to="/acc">MyAccount</Link>
-          </li>
-            <li className='p-1'>
-             <button onClick={handlelogout}>logout</button>
-      <Outlet />
-          </li>
-        </ul>
-      </nav>
+            <nav>
+                    <ul className=' flex flex-row flex-3/4 bg-white text-sm/6 text-sky-400 font-sans font-semibold shadow-lg' >
+                      <li className='p-1'>
+                        <Link to="/user">Home</Link>
+                      </li>
+                      <li className='p-1'>
+                        <Link to="/sendmoney">SendMoney</Link>
+                      </li>
+                      <li className='p-1'>
+                        <Link to="/transact">Transactions</Link>
+                      </li>
+                     <li className='p-1'>
+                        <Link to="/acc">MyAccount</Link>
+                      </li>
+                        <li className='p-1'>
+                         <button onClick={handlelogout}>logout</button>
+                  <Outlet />
+                      </li>
+                    </ul>
+                  </nav>
   <h1>Customer details</h1>
 <table className="border-solid bg-white w-full p-2">
     <thead>

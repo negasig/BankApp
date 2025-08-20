@@ -1,40 +1,32 @@
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import About from './pages/about';
+import About from '../src/userpages/about';
+import Customers from '../src/adminpages/customers';
+import Admin from '../src/adminpages/admin';
+import Manager from '../src/adminpages/manager';
+import Transaction from '../src/userpages/transaction';
+import SendMoney from '../src/userpages/sendmoney';
+import User from '../src/userpages/user';
+import Layout from '../src/userpages/layout';
 import './App.css';
 import './output.css'
-import Students from './pages/customers';
-import Layout from './pages/layout';
-
-import Manager from './pages/manager';
-import Profile from './pages/profile';
 import Login from './pages/login';
-import Myaccount from './pages/myaccount';
-import Clogin from './pages/customer';
-import Logintwo from './pages/logintwo';
-import User from './pages/user';
-import Admin from './pages/admin';
-import Counter from './pages/counter';
-import Transaction from './pages/transaction';
-import SendMoney from './pages/sendmoney';
 
 function App() {
   return <>
-<h1 className='w-full text-2xl shadow-lg font-bold flex items-center justify-center'>Welcome to ABC bank</h1>
+
  <BrowserRouter>
  <Routes>
   <Route path='/home'element={<Layout />} />
-    <Route path='/clogin'element={<Clogin />} />
-  <Route path='/customers' element={<Students />} />
+
+  <Route path='/customers' element={<Customers />} />
   <Route path='/about'element={<About />} />
-  <Route path='/acc'element={< Myaccount/>} />
    <Route path='/manager'element={< Manager/>} />
-   <Route path='/profile'element={< Profile/>} />
     <Route path='/'element={< Login/>} />
-    <Route path='/logtwo' element={<Logintwo />} />
+    <Route path='/login' element={<Login />} />
     <Route path='/admin' element={<Admin />} />
     <Route path='/user' element={<User />} />
-    <Route path='/counter' element={<Counter />} />
+
     <Route path='/transact' element={<Transaction />} />
     <Route path='/sendmoney' element={<SendMoney />} />
  </Routes>

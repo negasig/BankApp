@@ -12,9 +12,9 @@ LastName: string;
 AccountNumber:number;
 @Column()
 Balance:number;
-@Column()
+@Column({nullable:true})
 deposit:number;
-@Column()
+@Column({nullable:true})
 withdrawal:number
 @Column()
 description:string

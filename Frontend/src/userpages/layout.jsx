@@ -1,16 +1,15 @@
 import { useEffect, useState } from "react";
 import { Outlet, Link, useNavigate } from "react-router-dom";
-import Login from "./login";
+import Login from "../pages/logintest";
 import '../output.css'
 
 const Layout = () => {
       const nav=useNavigate();
       const[islogedin, setislogedin]=useState(localStorage.getItem("logintwo"))
-      const handlelogout=()=>{
-  localStorage.removeItem("logintwo")
- setislogedin(false);
- nav("/")
-    }
+        const handlelogout=()=>{
+      localStorage.removeItem("logintwo")
+         nav("/login")
+        }
     useEffect(()=>{
    if(islogedin==="false"){
     setislogedin(false);
@@ -22,7 +21,7 @@ const Layout = () => {
       <nav>
         <ul className=' flex flex-row flex-3/4 bg-white text-sm/6 text-sky-400 font-sans font-semibold shadow-lg' >
               <li className='p-1'>
-                <Link to="/home">Home</Link>
+                <Link to="/user">Home</Link>
               </li>
               <li className='p-1'>
                 <Link to="/sendmoney">SendMoney</Link>

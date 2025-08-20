@@ -4,7 +4,8 @@ import { jwtDecode } from 'jwt-decode';
     import '../output.css'
 
     import { Link, Outlet, useNavigate } from 'react-router-dom';
-import Logintwo from './logintwo';
+import Logintwo from '../pages/login';
+import Login from '../pages/login';
 export default function User() {
       const log=localStorage.getItem("logintwo");
       const userloged=jwtDecode(log);
@@ -23,7 +24,7 @@ export default function User() {
         const nav=useNavigate();
         const handlelogout=()=>{
       localStorage.removeItem("logintwo")
-         nav("/logtwo")
+         nav("/login")
         }
         const finduser=()=>{
     
@@ -79,7 +80,7 @@ export default function User() {
     <nav>
             <ul className=' flex flex-row flex-3/4 bg-white text-sm/6 text-sky-400 font-sans font-semibold shadow-lg' >
               <li className='p-1'>
-                <Link to="/home">Home</Link>
+                <Link to="/user">Home</Link>
               </li>
               <li className='p-1'>
                 <Link to="/sendmoney">SendMoney</Link>
@@ -100,7 +101,7 @@ export default function User() {
 <p> Your Balance is: {usern.Balance}</p>
 
      
-   </div>:<Logintwo />
+   </div>:<Login />
 
  }
    

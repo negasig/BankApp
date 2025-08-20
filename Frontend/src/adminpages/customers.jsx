@@ -1,16 +1,16 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import '../output.css'
-import Login from './login';
+import Login from '../pages/logintest';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
-export default function Students() {
+export default function Customers() {
     const[users, setUsers]=useState([]);
    const[islogedin, setislogedin]=useState(localStorage.getItem("logintwo"))
    const nav=useNavigate();
    const handlelogout=()=>{
   localStorage.removeItem("logintwo")
  setislogedin(false);
-  nav("/")
+  nav("/login")
     }
     const url="http://localhost:3002/customers/findCustomers";
     const findusers=()=>{
@@ -29,18 +29,8 @@ export default function Students() {
         <nav>
         <ul className=' flex flex-row flex-3/4 text-sm/6 pb-1 bg-white text-black font-sans font-semibold shadow-md' >
               <li className='p-1'>
-                <Link to="/home">Home</Link>
+                <Link to="/admin">Home</Link>
               </li>
-              <li className='p-1'>
-                <Link to="/sendmoney">SendMoney</Link>
-              </li>
-              <li className='p-1'>
-                <Link to="/transact">Transactions</Link>
-              </li>
-             <li className='p-1'>
-                <Link to="/acc">MyAccount</Link>
-              </li>
-
             <li className='p-1'>
              <button onClick={handlelogout} className='cursor-pointer'>logout</button>
       <Outlet />
