@@ -22,6 +22,5 @@ description:string
 date:Date
 @Column()
 transferamount:number
-@Column()
-currency:string
+
 }

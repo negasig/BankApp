@@ -36,7 +36,7 @@ export class AppService {
    findUserByUsername(username: string): Promise<Customer|null>{
    return this.userRepository.findOneBy({username:username})
   }
-  async deposit(accountNumber: number,amount:number, description:string, currency:string): Promise<Customer|string|null>{
+  async deposit(accountNumber: number,amount:number, description:string): Promise<Customer|string|null>{
    
    const user=await this.userRepository.findOne({where:{AccountNumber:accountNumber}})
  if(!user){
@@ -54,7 +54,7 @@ export class AppService {
     transaction.deposit=amount;
     transaction.description=description
     transaction.Balance=user.Balance+amount;
-    transaction.currency=currency;
+ 
     transaction.date=new Date();
     await this.transactionRepo.save(transaction);
      user.Balance +=amount;
@@ -66,7 +66,7 @@ export class AppService {
  return"please try again"
   }
 }
-  async withdraw(accountNumber: number,amount:number, description:string, currency:string): Promise<Customer|string|null|undefined>{
+  async withdraw(accountNumber: number,amount:number, description:string, ): Promise<Customer|string|null|undefined>{
      const dailymax=10000;
    const user=await this.userRepository.findOne({where:{AccountNumber:accountNumber}})
  if(!user){
@@ -93,7 +93,7 @@ export class AppService {
     transaction.LastName=user.LastName;
     transaction.withdrawal=amount;
     transaction.description=description
-    transaction.currency=currency;
+
     transaction.date=new Date();
     transaction.Balance=user.Balance-amount;
     await this.transactionRepo.save(transaction);
@@ -159,7 +159,7 @@ async transfer(AccountNumberA:number,  AccountNumberB:number, Amount:number, Des
     transaction.Balance=customer1.Balance
     transaction.LastName=customer1.LastName
     transaction.description=Description;
-    transaction.transferamount=Amount;
+    transaction.transferamount=customer1.Balance-customer1.Balance+Amount;
     this.transactionRepo.save(transaction)
         transaction2.date=new Date();
     transaction2.AccountNumber=AccountNumberB
