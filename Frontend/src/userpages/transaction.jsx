@@ -98,7 +98,7 @@ export default function Transaction() {
             </ul>
           </nav>
 
-      <table className="border-solid bg-white w-full p-2">
+      <table className="border-solid bg-white w-full p-2 ml-1.5">
      <thead>
        <th className=' text-sky-500 text-left'>Date</th>
        <th className=' text-sky-500 text-left'>FirstName</th>
@@ -113,7 +113,13 @@ export default function Transaction() {
      </thead>
      <tbody>
        {user.map(u => {
-         return <tr key={u.id} className='border-1'><td>{u.date}</td><td>{u.FirstName}</td><td>{u.LastName}</td><td>{u.withdrawal>0? `- $${u.withdrawal}`: " "}</td><td>{u.deposit>0?`+ $${u.deposit}`: ""}</td><td>{u.description}</td><td>{u.transferamount>0?`$${u.transferamount}`:""}</td><td>${u.Balance}</td></tr>;
+         return <tr key={u.id} className='border-1'><td>{new Date(u.date).toLocaleDateString("en-GB",{
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit"
+  })}</td><td>{u.FirstName}</td><td>{u.LastName}</td><td>{u.withdrawal>0? `- $${u.withdrawal}`: " "}</td><td>{u.deposit>0?`+ $${u.deposit}`: ""}</td><td>{u.description}</td><td>{u.transferamount>0?`$${u.transferamount}`:""}</td><td>${u.Balance}</td></tr>;
 
        }
        )}
