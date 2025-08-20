@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import "../output.css"
 import Login from './login'
 import { Link, Outlet, useNavigate } from 'react-router-dom'
+import Logintwo from './logintwo'
 export default function About() {
   const[islogedin, setislogedin]=useState(localStorage.getItem("logintwo"))
   const nav=useNavigate();
@@ -30,5 +31,5 @@ export default function About() {
         </ul>
       </nav>
 <h1>About The Bank</h1>
-  </>:<Login />
+  </>:<Logintwo />
 }

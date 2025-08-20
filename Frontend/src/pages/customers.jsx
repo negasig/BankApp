@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import '../output.css'
 import Login from './login';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
+import Logintwo from './logintwo';
 export default function Students() {
     const[users, setUsers]=useState([]);
    const[islogedin, setislogedin]=useState(localStorage.getItem("logintwo"))
@@ -10,7 +11,7 @@ export default function Students() {
    const handlelogout=()=>{
   localStorage.removeItem("logintwo")
  setislogedin(false);
-  nav("/")
+  nav("/logtwo")
     }
     const url="http://localhost:3002/customers/findCustomers";
     const findusers=()=>{
@@ -29,13 +30,7 @@ export default function Students() {
         <nav>
         <ul className=' flex flex-row flex-3/4 text-sm/6 pb-1 bg-white text-black font-sans font-semibold shadow-md' >
               <li className='p-1'>
-                <Link to="/home">Home</Link>
-              </li>
-              <li className='p-1'>
-                <Link to="/sendmoney">SendMoney</Link>
-              </li>
-              <li className='p-1'>
-                <Link to="/transact">Transactions</Link>
+                <Link to="/admin">Home</Link>
               </li>
              <li className='p-1'>
                 <Link to="/acc">MyAccount</Link>
@@ -66,5 +61,5 @@ export default function Students() {
  
     </tbody>
 </table>
-  </>:<Login />
+  </>:<Logintwo />
 }
