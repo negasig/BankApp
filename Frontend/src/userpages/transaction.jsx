@@ -119,7 +119,7 @@ export default function Transaction() {
     year: "numeric",
     hour: "2-digit",
     minute: "2-digit"
-  })}</td><td>{u.FirstName}</td><td>{u.LastName}</td><td>{u.withdrawal>0? `- $${u.withdrawal}`: " "}</td><td>{u.deposit>0?`+ $${u.deposit}`: ""}</td><td>{u.description}</td><td>{u.transferamount>0?`$${u.transferamount}`:""}</td><td>${u.Balance}</td></tr>;
+  })}</td><td>{u.FirstName}</td><td>{u.LastName}</td><td>{u.withdrawal>0? `-Br ${u.withdrawal}`: " "}</td><td>{u.deposit>0?`+Br ${u.deposit}`: ""}</td><td>{u.description}</td><td>{u.transferamount>0?`+Br ${u.transferamount}`:u.transferamount<0?`-Br ${-u.transferamount}`:""}</td><td>${u.Balance}</td></tr>;
 
        }
        )}

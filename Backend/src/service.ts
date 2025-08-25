@@ -159,7 +159,7 @@ async transfer(AccountNumberA:number,  AccountNumberB:number, Amount:number, Des
     transaction.Balance=customer1.Balance
     transaction.LastName=customer1.LastName
     transaction.description=Description;
-    transaction.transferamount=customer1.Balance-customer1.Balance+Amount;
+    transaction.transferamount=-Amount;
     this.transactionRepo.save(transaction)
         transaction2.date=new Date();
     transaction2.AccountNumber=AccountNumberB
@@ -176,11 +176,13 @@ return `You have received ${Amount} Birr from ${AccountNumberA} Your balance is 
 async logincustomer(username:string, password:string):Promise<any>{
   
  const user=await this.findUserByUsername(username);
- 
-    if (!user) {
+ if(!user){
+  return "no such user"
+ }
+    else if (user?.username!=username) {
       return { message: 'Invalid credentials' };
     }
-    if(user.password!=password){
+    else if(user.password!=password){
       return "invalid credientials"
     }
     return this.jwtservice.sign({role:user.role, username:user.username, accountnumber:user.AccountNumber});

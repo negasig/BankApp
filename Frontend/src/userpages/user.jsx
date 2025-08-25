@@ -99,6 +99,7 @@ export default function User() {
           </nav>
      <h1>Welcome <span style={{color:"red", fontSize:"16px"}}> {userloged.username}</span></h1>
 <p> Your Balance is: {usern.Balance}</p>
+<p>Account Number: {usern.AccountNumber}</p>
 
      
    </div>:<Login />
