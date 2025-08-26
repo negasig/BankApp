@@ -98,28 +98,28 @@ export default function Transaction() {
             </ul>
           </nav>
 
-      <table className="border-solid bg-white w-full p-2 ml-1.5">
-     <thead>
-       <th className=' text-sky-500 text-left'>Date</th>
-       <th className=' text-sky-500 text-left'>FirstName</th>
-       <th className=' text-sky-500 text-left'>LastName</th>
+      <table className="border-solid bg-white w-full p-2 ml-1.5 ">
+     <thead className='bg-green-600'>
+       <th className=' text-white text-left border-1'>Date</th>
+       <th className=' text-white  text-left border-1'>FirstName</th>
+       <th className=' text-white text-left border-1'>LastName</th>
       
-       <th className=' text-sky-500 text-left'>Withdrawal</th>
-       <th className=' text-sky-500 text-left'>Deposit</th>
-       <th className=' text-sky-500 text-left'>Description</th>
-        <th className=' text-sky-500 text-left'>Tranfer Amount</th>
-       <th className=' text-sky-500 text-left'>Balance</th>
+       <th className=' text-white text-left border-1'>Withdrawal</th>
+       <th className=' text-white text-left border-1'>Deposit</th>
+       <th className=' text-white  text-left border-1'>Description</th>
+        <th className=' text-white  text-left border-1'>Tranfer Amount</th>
+       <th className=' text-white  text-left border-1'>Balance</th>
 
      </thead>
      <tbody>
        {user.map(u => {
-         return <tr key={u.id} className='border-1'><td>{new Date(u.date).toLocaleDateString("en-GB",{
+         return <tr key={u.id} className='border-1'><td className='border-1 pl-1.5' >{new Date(u.date).toLocaleDateString("en-GB",{
     day: "2-digit",
     month: "short",
     year: "numeric",
     hour: "2-digit",
     minute: "2-digit"
-  })}</td><td>{u.FirstName}</td><td>{u.LastName}</td><td>{u.withdrawal>0? `-Br ${u.withdrawal}`: " "}</td><td>{u.deposit>0?`+Br ${u.deposit}`: ""}</td><td>{u.description}</td><td>{u.transferamount>0?`+Br ${u.transferamount}`:u.transferamount<0?`-Br ${-u.transferamount}`:""}</td><td>${u.Balance}</td></tr>;
+  })}</td><td className='border-1  pl-1.5'>{u.FirstName}</td><td className='border-1 pl-1.5'>{u.LastName}</td><td className='border-1 pl-1.5'>{u.withdrawal>0? `-Br ${u.withdrawal}`: " "}</td><td className='border-1 pl-1.5'>{u.deposit>0?`+Br ${u.deposit}`: ""}</td><td className='border-0.5 pl-1.5'>{u.description}</td><td className='border-1 pl-1.5'>{u.transferamount>0?`+Br ${u.transferamount}`:u.transferamount<0?`-Br ${-u.transferamount}`:""}</td><td className='border-1 pl-1.5'>${u.Balance}</td></tr>;
 
        }
        )}

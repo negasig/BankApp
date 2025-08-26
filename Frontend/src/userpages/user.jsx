@@ -97,9 +97,12 @@ export default function User() {
               </li>
             </ul>
           </nav>
-     <h1>Welcome <span style={{color:"red", fontSize:"16px"}}> {userloged.username}</span></h1>
-<p> Your Balance is: {usern.Balance}</p>
-<p>Account Number: {usern.AccountNumber}</p>
+     <h1 className='font-bold pt-2.5'>Welcome back,  <span style={{color:"green", fontSize:"16px"}}> {userloged.username}</span></h1>
+     <div className='flex flex-col ml-96 font-bold items-end mr-44 text-left bg-amber-600'>
+<p>Balance: <span className='underline'>{usern.Balance}</span></p>
+<p>Account: <span className='underline'>{usern.AccountNumber}</span></p>
+     </div>
+
 
      
    </div>:<Login />
