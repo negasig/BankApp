@@ -21,7 +21,7 @@ import { JwtModule, JwtService } from '@nestjs/jwt';
     }),
     TypeOrmModule.forFeature([Customer, Transactionn]), JwtModule.register({
       secret: 'negasi_g', // move to .env for production
-      signOptions: { expiresIn: '1h' },
+      signOptions: { expiresIn: '5m' },
     })],
   controllers: [AppController],
   providers: [AppService],

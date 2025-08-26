@@ -4,7 +4,8 @@ import { jwtDecode } from 'jwt-decode';
     import '../output.css'
 
     import { Link, Outlet, useNavigate } from 'react-router-dom';
-import Logintwo from './logintwo';
+import Logintwo from '../pages/login';
+import Login from '../pages/login';
 export default function Transaction() {
       const log=localStorage.getItem("logintwo");
       const userloged=jwtDecode(log);
@@ -23,8 +24,7 @@ export default function Transaction() {
         const nav=useNavigate();
         const handlelogout=()=>{
       localStorage.removeItem("logintwo")
-         nav("/logtwo")
-         setislogedin(false)
+         nav("/login")
         }
         const finduser=()=>{
     
@@ -80,7 +80,7 @@ export default function Transaction() {
     <nav>
             <ul className=' flex flex-row flex-3/4 bg-white text-sm/6 text-sky-400 font-sans font-semibold shadow-lg' >
               <li className='p-1'>
-                <Link to="/admin">Home</Link>
+                <Link to="/user">Home</Link>
               </li>
               <li className='p-1'>
                 <Link to="/sendmoney">SendMoney</Link>
@@ -98,22 +98,28 @@ export default function Transaction() {
             </ul>
           </nav>
 
-      <table className="border-solid bg-white w-full p-2">
+      <table className="border-solid bg-white w-full p-2 ml-1.5">
      <thead>
        <th className=' text-sky-500 text-left'>Date</th>
        <th className=' text-sky-500 text-left'>FirstName</th>
        <th className=' text-sky-500 text-left'>LastName</th>
-       <th className=' text-sky-500 text-left'>Dailywithdrawl</th>
-       <th className=' text-sky-500 text-left'>withdrawal</th>
-       <th className=' text-sky-500 text-left'>deposit</th>
+      
+       <th className=' text-sky-500 text-left'>Withdrawal</th>
+       <th className=' text-sky-500 text-left'>Deposit</th>
        <th className=' text-sky-500 text-left'>Description</th>
-        <th className=' text-sky-500 text-left'>Amount</th>
+        <th className=' text-sky-500 text-left'>Tranfer Amount</th>
        <th className=' text-sky-500 text-left'>Balance</th>
 
      </thead>
      <tbody>
        {user.map(u => {
-         return <tr key={u.id} className='border-1'><td>{u.date}</td><td>{u.FirstName}</td><td>{u.LastName}</td><td>{u.dailywithdrawl}</td><td>{u.withdrawal}</td><td>{u.deposit}</td><td>{u.description}</td><td>{u.transferamount}</td><td>{u.Balance}</td></tr>;
+         return <tr key={u.id} className='border-1'><td>{new Date(u.date).toLocaleDateString("en-GB",{
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit"
+  })}</td><td>{u.FirstName}</td><td>{u.LastName}</td><td>{u.withdrawal>0? `- $${u.withdrawal}`: " "}</td><td>{u.deposit>0?`+ $${u.deposit}`: ""}</td><td>{u.description}</td><td>{u.transferamount>0?`$${u.transferamount}`:""}</td><td>${u.Balance}</td></tr>;
 
        }
        )}
@@ -122,7 +128,7 @@ export default function Transaction() {
 
 
    
-   </div>:<Logintwo />
+   </div>:<Login />
 
  }
    

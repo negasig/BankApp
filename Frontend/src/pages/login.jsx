@@ -1,13 +1,15 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom';
-import Layout from './layout';
+import { Link, useNavigate } from 'react-router-dom';
+import Layout from '../userpages/layout';
+import { jwtDecode } from 'jwt-decode';
 export default function Login() {
     const[username, setUsername]=useState("")
     const[password, setPassword]=useState("")
     const[islogedin, setislogedin]=useState(false)
      const[errmsg, seterrmsg]=useState("")
-        const urll="http://localhost:3002/customers/signin";
+     const [role, setRole]=useState("")
+        const urll="http://localhost:3002/customers/logincs";
         const nav=useNavigate();
     const handlesubmit=(e)=>{
 
@@ -19,26 +21,53 @@ export default function Login() {
               password:password
                }
              }).then(res=>{
-               localStorage.setItem("login", res.data);
-             })
+             if(JSON.stringify(res).includes(".")){
+
+             
+               localStorage.setItem("logintwo", res.data);
+             }       else{
+             seterrmsg("incorrect credientials");
+
+             }
+            })
+       
+            
+    }
+    const handlelogin=()=>{
+       const log=localStorage.getItem("logintwo")
+  if(log && log.length>0){
+    const decoded=jwtDecode(JSON.stringify(log));
+    setRole(decoded.role);
+  }
+ if (role==="admin"){
+    nav("/admin")
+  }
+  else if(role==="user"){
+    nav("/user")
+  }
     }
     useEffect(()=>{
-  const log=localStorage.getItem("login")
-  
-  if(log==="true"){
-    setislogedin(true);
-    nav("/home")
-  }
-  else if(log==="false"){
-    seterrmsg("Invalid Credientials")
-    nav("/")
-  }
-    },[islogedin])
-  return islogedin==="true"?<Layout />:<>
-  <div className=' text-sm font-bold flex items-center justify-center'>Login</div><br/>
+
+    handlelogin();
+       
+    },[role])
+    
+  return islogedin?<Layout />:<>
+  <div>
+<h1 className='w-full text-2xl shadow-lg font-bold flex items-center justify-self-start'>Welcome to ABC bank</h1>
+    <nav className='ml-3.5 '>
+            <ul className=' flex flex-row flex-3/4 bg-white text-sm/6 text-sky-400 font-sans font-semibold shadow-lg' >
+              <li className='p-1'>
+                <Link to="/transact">About us</Link>
+              </li>
+            </ul>
+          </nav>
+  </div>
+
         
       <h1 className='font-bold mb-0.5 text-red-500 flex items-center justify-center'>{errmsg}</h1><br></br>
-   <div className='flex items-center justify-center flex-wrap mt-1'>
+        <div className=' font-bold flex items-center justify-center text-2xl '>Secure Login</div><br/>
+   <div className='flex items-center justify-center flex-wrap mt-0'>
 
       <form>
         

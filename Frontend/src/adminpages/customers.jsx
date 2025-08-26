@@ -1,17 +1,16 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import '../output.css'
-import Login from './login';
+import Login from '../pages/logintest';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
-import Logintwo from './logintwo';
-export default function Students() {
+export default function Customers() {
     const[users, setUsers]=useState([]);
    const[islogedin, setislogedin]=useState(localStorage.getItem("logintwo"))
    const nav=useNavigate();
    const handlelogout=()=>{
   localStorage.removeItem("logintwo")
  setislogedin(false);
-  nav("/logtwo")
+  nav("/login")
     }
     const url="http://localhost:3002/customers/findCustomers";
     const findusers=()=>{
@@ -32,10 +31,6 @@ export default function Students() {
               <li className='p-1'>
                 <Link to="/admin">Home</Link>
               </li>
-             <li className='p-1'>
-                <Link to="/acc">MyAccount</Link>
-              </li>
-
             <li className='p-1'>
              <button onClick={handlelogout} className='cursor-pointer'>logout</button>
       <Outlet />
@@ -61,5 +56,5 @@ export default function Students() {
  
     </tbody>
 </table>
-  </>:<Logintwo />
+  </>:<Login />
 }
