@@ -26,17 +26,21 @@ export default function Customers() {
     },[users])
 
   return islogedin?<>
+   <h1 className='text-center font-bold'>Welcome To ABC Bank</h1>
         <nav>
-        <ul className=' flex flex-row flex-3/4 text-sm/6 pb-1 bg-white text-black font-sans font-semibold shadow-md' >
-              <li className='p-1'>
-                <Link to="/admin">Home</Link>
-              </li>
-            <li className='p-1'>
-             <button onClick={handlelogout} className='cursor-pointer'>logout</button>
-      <Outlet />
-          </li>
-        </ul>
-      </nav>
+                <ul className=' flex flex-row flex-3/4 text-sm/6 pb-1 bg-white text-black font-sans font-semibold shadow-md' >
+                  <li className='p-1'>
+                    <Link to="/admin">Home</Link>
+                  </li>
+                  <li className='p-1'>
+                    <Link to="/customers">Customers</Link>
+                  </li>
+                    <li className='p-1'>
+                     <button onClick={handlelogout}>logout</button>
+              <Outlet />
+                  </li>
+                </ul>
+              </nav>
   <h1>Customers</h1>
 <table className="border-solid w-full p-2 mt-2">
     <thead>

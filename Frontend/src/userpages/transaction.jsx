@@ -76,27 +76,26 @@ export default function Transaction() {
       
 
 
-  return logedin? <div>
-    <nav>
-            <ul className=' flex flex-row flex-3/4 bg-white text-sm/6 text-sky-400 font-sans font-semibold shadow-lg' >
-              <li className='p-1'>
-                <Link to="/user">Home</Link>
-              </li>
-              <li className='p-1'>
-                <Link to="/sendmoney">SendMoney</Link>
-              </li>
-              <li className='p-1'>
-                <Link to="/transact">Transactions</Link>
-              </li>
-             <li className='p-1'>
-                <Link to="/acc">MyAccount</Link>
-              </li>
+  return logedin && userloged.role==="user"? <div>
+      <h1 className='text-center font-bold'>Welcome To ABC Bank</h1>
+      <nav>
+              <ul className=' flex flex-row flex-3/4 bg-white text-sm/6 text-black font-sans font-semibold shadow-lg' >
                 <li className='p-1'>
-                 <button onClick={handlelogout}>logout</button>
-          <Outlet />
-              </li>
-            </ul>
-          </nav>
+                  <Link to="/user">Home</Link>
+                </li>
+                <li className='p-1'>
+                  <Link to="/sendmoney">SendMoney</Link>
+                </li>
+                <li className='p-1'>
+                  <Link to="/transact">Transactions</Link>
+                </li>
+
+                  <li className='p-1'>
+                   <button onClick={handlelogout}>logout</button>
+            <Outlet />
+                </li>
+              </ul>
+            </nav>
 
       <table className="border-solid bg-white w-full p-2 ml-1.5 ">
      <thead className='bg-green-600'>
@@ -119,7 +118,7 @@ export default function Transaction() {
     year: "numeric",
     hour: "2-digit",
     minute: "2-digit"
-  })}</td><td className='border-1  pl-1.5'>{u.FirstName}</td><td className='border-1 pl-1.5'>{u.LastName}</td><td className='border-1 pl-1.5'>{u.withdrawal>0? `-Br ${u.withdrawal}`: " "}</td><td className='border-1 pl-1.5'>{u.deposit>0?`+Br ${u.deposit}`: ""}</td><td className='border-0.5 pl-1.5'>{u.description}</td><td className='border-1 pl-1.5'>{u.transferamount>0?`+Br ${u.transferamount}`:u.transferamount<0?`-Br ${-u.transferamount}`:""}</td><td className='border-1 pl-1.5'>${u.Balance}</td></tr>;
+  })}</td><td className='border-1  pl-1.5'>{u.FirstName}</td><td className='border-1 pl-1.5'>{u.LastName}</td><td className='border-1 pl-1.5'>{u.withdrawal>0? `-Br ${u.withdrawal}`: " "}</td><td className='border-1 pl-1.5'>{u.deposit>0?`+Br ${u.deposit}`: ""}</td><td className='border-0.5 pl-1.5'>{u.description}</td><td className='border-1 pl-1.5'>{u.transferamount>0?`+ ${u.transferamount} Birr`:u.transferamount<0?`- ${-u.transferamount} Birr`:""}</td><td className='border-1 pl-1.5'>{u.Balance} Birr</td></tr>;
 
        }
        )}

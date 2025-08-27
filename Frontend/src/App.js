@@ -1,6 +1,6 @@
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import About from '../src/userpages/about';
+import About from './pages/about';
 import Customers from '../src/adminpages/customers';
 import Admin from '../src/adminpages/admin';
 import Manager from '../src/adminpages/manager';

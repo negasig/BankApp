@@ -29,9 +29,6 @@ const Layout = () => {
               <li className='p-1'>
                 <Link to="/transact">Transactions</Link>
               </li>
-             <li className='p-1'>
-                <Link to="/acc">MyAccount</Link>
-              </li>
 
             <li className='p-1'>
              <button onClick={handlelogout}>logout</button>

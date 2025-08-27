@@ -33,6 +33,7 @@ export default function Admin() {
     }
 
 return islogedin==="true"?<>
+ <h1 className='text-center font-bold'>Welcome To ABC Bank</h1>
 <nav>
         <ul className=' flex flex-row flex-3/4 bg-white text-sm/6 text-sky-400 font-sans font-semibold shadow-lg' >
           <li className='p-1'>
@@ -40,15 +41,6 @@ return islogedin==="true"?<>
           </li>
           <li className='p-1'>
             <Link to="/customers">Customers</Link>
-          </li>
-         <li className='p-1'>
-            <Link to="/about">About</Link>
-          </li>
-         <li className='p-1'>
-            <Link to="/acc">MyAccount</Link>
-          </li>
-         <li className='p-1'>
-            <Link to="/profile">profile</Link>
           </li>
             <li className='p-1'>
              <button onClick={handlelogout}>logout</button>

@@ -54,11 +54,11 @@ export default function Login() {
     
   return islogedin?<Layout />:<>
   <div>
-<h1 className='w-full text-2xl shadow-lg font-bold flex items-center justify-self-start'>Welcome to ABC bank</h1>
+    <h1 className='text-center font-bold'>Welcome To ABC Bank</h1>
     <nav className='ml-3.5 '>
-            <ul className=' flex flex-row flex-3/4 bg-white text-sm/6 text-sky-400 font-sans font-semibold shadow-lg' >
+            <ul className=' flex flex-row flex-3/4  bg-white text-sm/6 text-sky-400 font-sans font-semibold shadow-lg' >
               <li className='p-1'>
-                <Link to="/transact">About us</Link>
+                <Link to="/about">About us</Link>
               </li>
             </ul>
           </nav>
@@ -76,7 +76,7 @@ export default function Login() {
         <label htmlFor="password">Password</label><br></br>
         <input type='password' placeholder='password' id='password' required onChange={(e)=>setPassword(e.target.value)} className='p-1 border-1 md:w-100 sm:w-120 lg:w-90 w-75 rounded-lg'/><br></br>
 
-        <button onClick={handlesubmit} className='text-white hover:border-transparent cursor-pointer active:bg-sky-700 border-2 bg-sky-500 border-purple-200 hover:bg-purple-600 hover:text-white shadow-xl/20 p-1 pl-5 pr-5 mt-2 font-bold rounded-full'>LOGIN</button>
+        <button onClick={handlesubmit} className='text-white hover:border-transparent cursor-pointer active:bg-sky-700 border-2 bg-sky-500 border-purple-200 hover:bg-purple-600 ml-65 hover:text-white shadow-xl/20 p-1 pl-5 pr-5 mt-2 font-bold rounded-full'>LOGIN</button>
       </form>
         </div>
   </>  

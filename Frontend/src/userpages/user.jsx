@@ -77,8 +77,9 @@ export default function User() {
 
 
   return logedin && userloged.role==="user"? <div>
+    <h1 className='text-center font-bold'>Welcome To ABC Bank</h1>
     <nav>
-            <ul className=' flex flex-row flex-3/4 bg-white text-sm/6 text-sky-400 font-sans font-semibold shadow-lg' >
+            <ul className=' flex flex-row flex-3/4 bg-white text-sm/6 text-black font-sans font-semibold shadow-lg' >
               <li className='p-1'>
                 <Link to="/user">Home</Link>
               </li>
@@ -88,9 +89,6 @@ export default function User() {
               <li className='p-1'>
                 <Link to="/transact">Transactions</Link>
               </li>
-             <li className='p-1'>
-                <Link to="/acc">MyAccount</Link>
-              </li>
                 <li className='p-1'>
                  <button onClick={handlelogout}>logout</button>
           <Outlet />
@@ -98,9 +96,9 @@ export default function User() {
             </ul>
           </nav>
      <h1 className='font-bold pt-2.5'>Welcome back,  <span style={{color:"green", fontSize:"16px"}}> {userloged.username}</span></h1>
-     <div className='flex flex-col ml-96 font-bold items-end mr-44 text-left bg-amber-600'>
-<p>Balance: <span className='underline'>{usern.Balance}</span></p>
-<p>Account: <span className='underline'>{usern.AccountNumber}</span></p>
+     <div className='flex flex-col ml-40 font-bold items-center  text-left relative'>
+<p><span className=''>Balance:</span> <span className='underline pl-2.5'>{usern.Balance} Birr</span></p>
+<p>Account: <span className='underline pl-4'>{usern.AccountNumber}</span></p>
      </div>
 
 

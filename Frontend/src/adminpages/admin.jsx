@@ -59,6 +59,7 @@ if(user.length>0){
 </table>
 }
 return islogedin===true && decoded.role==="admin"?<>
+ <h1 className='text-center font-bold'>Welcome To ABC Bank</h1>
 <nav>
         <ul className=' flex flex-row flex-3/4 text-sm/6 pb-1 bg-white text-black font-sans font-semibold shadow-md' >
           <li className='p-1'>
@@ -67,10 +68,6 @@ return islogedin===true && decoded.role==="admin"?<>
           <li className='p-1'>
             <Link to="/customers">Customers</Link>
           </li>
-         <li className='p-1'>
-            <Link to="/about">About</Link>
-          </li>
-
             <li className='p-1'>
              <button onClick={handlelogout}>logout</button>
       <Outlet />
