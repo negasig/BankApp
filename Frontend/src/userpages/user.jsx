@@ -77,6 +77,7 @@ export default function User() {
 
 
   return logedin && userloged.role==="user"? <div>
+    <h1>Welcome To Abc Bank</h1>
     <nav>
             <ul className=' flex flex-row flex-3/4 bg-white text-sm/6 text-sky-400 font-sans font-semibold shadow-lg' >
               <li className='p-1'>
@@ -97,8 +98,12 @@ export default function User() {
               </li>
             </ul>
           </nav>
-     <h1>Welcome <span style={{color:"red", fontSize:"16px"}}> {userloged.username}</span></h1>
-<p> Your Balance is: {usern.Balance}</p>
+     <h1 className='font-bold pt-2.5'>Welcome back,  <span style={{color:"green", fontSize:"16px"}}> {userloged.username}</span></h1>
+     <div className='flex flex-col ml-96 font-bold items-end mr-44 text-left bg-amber-600'>
+<p>Balance: <span className='underline'>{usern.Balance}</span></p>
+<p>Account: <span className='underline'>{usern.AccountNumber}</span></p>
+     </div>
+
 
      
    </div>:<Login />

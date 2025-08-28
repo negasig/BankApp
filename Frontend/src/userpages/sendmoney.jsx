@@ -102,12 +102,12 @@ export default function SendMoney() {
 
 
    <div>
-    <h2>Sendmoney</h2>
+    <h2 className='font-bold'>Sendmoney</h2>
     <p>{response}</p>
     <form>
       <input type='number' placeholder='enter receiver ACC' className='p-1 border-1 md:w-100 lg:w-65 m-1 sm:w-120 w-85 rounded-3xl' required onChange={(e)=>(setReceiverAccount(e.target.value))} /><br/>
       <input type='number' placeholder='enter Amount' className='p-1 border-1 md:w-100 lg:w-65 sm:w-120 w-85 rounded-3xl' required onChange={(e)=>(setAmount(e.target.value))} /><br/>
-      <input type='text' placeholder='enter description' className='p-1 border-1 md:w-100 lg:w-65 m-1 sm:w-120 w-85 rounded-lg' required onChange={(e)=>(setDescription(e.target.value))} /><br/>
+      <input type='text' placeholder='enter description' className='p-1 border-1 md:w-100 lg:w-65 m-1 sm:w-120 w-85 rounded-3xl' required onChange={(e)=>(setDescription(e.target.value))} /><br/>
       <button  onClick={handletransfer} className='text-white hover:border-transparent cursor-pointer active:bg-sky-700 border-1 bg-sky-500 border-purple-200 hover:bg-purple-600 hover:text-white shadow-xl/20 p-1 pl-5 ml-48 pr-5 mt-2 font-bold rounded-full'>Pay</button>
 
     </form>
