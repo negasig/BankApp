@@ -8,9 +8,12 @@ import Transaction from '../src/userpages/transaction';
 import SendMoney from '../src/userpages/sendmoney';
 import User from '../src/userpages/user';
 import Layout from '../src/userpages/layout';
+import Deposit from './adminpages/deposit';
+import withdrraw from './adminpages/withdrraw';
 import './App.css';
 import './output.css'
 import Login from './pages/login';
+import Withdrraw from './adminpages/withdrraw';
 
 function App() {
   return <>
@@ -26,7 +29,8 @@ function App() {
     <Route path='/login' element={<Login />} />
     <Route path='/admin' element={<Admin />} />
     <Route path='/user' element={<User />} />
-
+    <Route path='/withdraw' element={<Withdrraw />} />
+    <Route path='/deposit' element={<Deposit />} />
     <Route path='/transact' element={<Transaction />} />
     <Route path='/sendmoney' element={<SendMoney />} />
  </Routes>

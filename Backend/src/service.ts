@@ -183,7 +183,7 @@ async logincustomer(username:string, password:string):Promise<any>{
       return { message: 'Invalid credentials' };
     }
     else if(user.password!=password){
-      return "invalid credientials"
+      return "invalid credientialss"
     }
     return this.jwtservice.sign({role:user.role, username:user.username, accountnumber:user.AccountNumber});
   }
