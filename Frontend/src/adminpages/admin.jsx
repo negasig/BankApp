@@ -68,6 +68,18 @@ return islogedin===true && decoded.role==="admin"?<>
           <li className='p-1'>
             <Link to="/customers">Customers</Link>
           </li>
+<<<<<<< HEAD
+=======
+         <li className='p-1'>
+            <Link to="/about">About</Link>
+          </li>
+         <li className='p-1'>
+            <Link to="/withdraw">Dithdraw</Link>
+          </li>
+                   <li className='p-1'>
+            <Link to="/deposit">Deposit</Link>
+          </li>
+>>>>>>> df57cc81390cc5d0f240694d56f8d116c914903e
             <li className='p-1'>
              <button onClick={handlelogout}>logout</button>
       <Outlet />

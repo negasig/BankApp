@@ -25,9 +25,9 @@ export default function Login() {
 
              
                localStorage.setItem("logintwo", res.data);
-             }       else{
-             seterrmsg("incorrect credientials");
-
+             }      
+              else{
+             seterrmsg("Incorrect");
              }
             })
        

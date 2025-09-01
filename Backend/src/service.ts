@@ -144,7 +144,7 @@ async transfer(AccountNumberA:number,  AccountNumberB:number, Amount:number, Des
     return "for self is not allowed"
   }
   else if(!customer1 || !customer2){
-    return "Chceck your accounts"
+    return "Accounts does not exist"
   }
   else {
  
@@ -183,7 +183,7 @@ async logincustomer(username:string, password:string):Promise<any>{
       return { message: 'Invalid credentials' };
     }
     else if(user.password!=password){
-      return "invalid credientials"
+      return "invalid credientialss"
     }
     return this.jwtservice.sign({role:user.role, username:user.username, accountnumber:user.AccountNumber});
   }

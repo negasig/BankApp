@@ -76,10 +76,29 @@ export default function Transaction() {
       
 
 
+<<<<<<< HEAD
   return logedin && userloged.role==="user"? <div>
       <h1 className='text-center font-bold'>Welcome To ABC Bank</h1>
       <nav>
               <ul className=' flex flex-row flex-3/4 bg-white text-sm/6 text-black font-sans font-semibold shadow-lg' >
+=======
+  return logedin? <div>
+    <h1>Welcome To Abc Bank</h1>
+    <nav>
+            <ul className=' flex flex-row flex-3/4 bg-white text-sm/6 text-sky-400 font-sans font-semibold shadow-lg' >
+              <li className='p-1'>
+                <Link to="/user">Home</Link>
+              </li>
+              <li className='p-1'>
+                <Link to="/sendmoney">SendMoney</Link>
+              </li>
+              <li className='p-1'>
+                <Link to="/transact">Transactions</Link>
+              </li>
+             <li className='p-1'>
+                <Link to="/acc">MyAccount</Link>
+              </li>
+>>>>>>> df57cc81390cc5d0f240694d56f8d116c914903e
                 <li className='p-1'>
                   <Link to="/user">Home</Link>
                 </li>
